@@ -5,31 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:ital,wght@0,400..900;1,400..900&display=swap');
-    
-    * {
-      user-select: none;
-      font-family: "Lexend Deca", serif;
-      font-optical-sizing: auto;
-      font-weight: 200;
-      font-style: normal;
-      scroll-behavior: smooth;
-    }
-    
-    .catg > div > a {
-      width: 100%; padding: 1rem 1rem; border: 2px solid #00000050; border-radius: 5px;text-decoration: none; color: black;
-    }
-    
-  </style>
-  <title></title>
+  <link rel="stylesheet" href="index.css">
+  <title>Gamkharu-Bajali</title>
 </head>
 
 <body>
+  <div id="loader">
+    <div id="spinner"></div>
+  </div>
+  
+  
   <nav class="navbar navbar-expand-lg" style="padding:10px 30px;">
     <div class="container-fluid">
       <img src="img/profile.jpg" style="width: 60px; border-radius: 200px;" alt="">
-      <a class="navbar-brand" href="#" style="display:flex; justify-content: center; align-items: center;">&nbsp; Gamkharu</a>
+      <a class="navbar-brand" href="#" style="display:flex; justify-content: center; align-items: center; font-size: 1.35rem;font-weight: 500;margin: 0;">Gamkharu</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -61,42 +50,44 @@
   
   
   
-  <div class="carbd" style="padding: 1rem">
+  <div class="carbd" style="padding: 1rem;padding-top: 0.5rem;">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner" style="border-radius: 10px">
-    <div class="carousel-item active">
-      <img src="img/carousel1/slide1.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-inner" style="border-radius: 10px">
+        <div class="carousel-item active">
+          <img src="img/carousel1/slide1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel1/slide1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel1/slide1.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
     </div>
-    <div class="carousel-item">
-      <img src="img/carousel1/slide1.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="img/carousel1/slide1.jpg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-</div>
   </div>
   
   
   <div class="card text-center">
     <div class="card-header">
     </div>
-    </div>
-
-
+  </div>
+  
+  
   <div class="catg" style="padding: 1.5rem">
-    <u><h3>Catagory</h3></u>
+    <u>
+      <h3>Catagory</h3>
+    </u>
     <div class="btns" style="display: grid;
 grid-template-columns: repeat(2, 1fr);
-gap: 20px; padding-top: 1rem;">
+gap: .7rem; padding-top: 1rem;">
       <a href="">Women's</a>
       <a href="">Men's</a>
       <a href="">Mekhela Sador</a>
       <a href="">Kurties</a>
-
+      
     </div>
   </div>
-
+  
   
   <div class="card text-center">
     <div class="card-header">
@@ -111,6 +102,27 @@ gap: 20px; padding-top: 1rem;">
   </div>
   
   
+  
+  <div class="ftrd" style="padding: 1.5rem">
+    <u>
+      <h3>Featured</h3>
+    </u>
+    <div class="btns" style="display: block; overflow-x: scroll;">
+      <a href="" style="border: 2px solid black; border-radius: 10px; display: flex; flex-direction: column;justify-content: center; align-items: center; width: fit-content;"><img src="img/carousel1/slide1.jpg" alt="" style="width: 200px;">
+        <span class="about" style="padding: 1rem; display:flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;width:100%;">
+          <h5>#689</h5><span class="tags">
+            <p>A</p>
+            <p>B</p>
+          </span>
+          <h4>299₹</h4>
+        </span></a>
+    </div>
+  </div>
+  
+  
+  
+  
+  <script src="index.js"> </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   
 </body>
