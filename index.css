@@ -102,3 +102,9 @@
   flex-direction: row;
   gap: .5rem;
 }
+
+
+.contactsec{
+  background: #FF753F;
+  padding: 1.5rem;
+}

@@ -10,12 +10,23 @@
 </head>
 
 <body>
+  
+  
+  
+  
+  <!-- Loader -->
   <div id="loader">
     <div id="spinner"></div>
   </div>
   
   
-  <nav class="navbar navbar-expand-lg" style="padding:10px 30px;">
+  
+  
+  
+  
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar navbar-expand-lg" style="padding:10px 30px;">
     <div class="container-fluid">
       <img src="img/profile.jpg" style="width: 60px; border-radius: 200px;" alt="">
       <a class="navbar-brand" href="#" style="display:flex; justify-content: center; align-items: center; font-size: 1.35rem;font-weight: 500;margin: 0;">Gamkharu</a>
@@ -49,8 +60,17 @@
   </nav>
   
   
+  <!-- Search -->
+  <div class="searchbox" style="width:100%; display: flex; justify-content: center; align-items: center;
+  position: sticky; top:0; z-index: 10000; inset: 0 0 auto 0; background: white;padding: 1rem 0 1rem 0;
+  "><input type="text" placeholder="Search" style="width:90%; padding: 0.5rem;border-radius: 10px; border: 1px solid #00000055;" readonly onclick="window.location.replace('/search.html')">
+</div>
+
   
-  <div class="carbd" style="padding: 1rem;padding-top: 0.5rem;">
+  
+  
+  <!-- Carousel -->
+  <div id="carousel" class="carbd" style="padding: 1rem;padding-top: 0.5rem;">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner" style="border-radius: 10px">
         <div class="carousel-item active">
@@ -67,15 +87,20 @@
   </div>
   
   
-  <div class="card text-center">
-    <div class="card-header">
-    </div>
+  <!-- Space -->
+  <div class="space card text-center">
+    <div class="card-header"></div>
   </div>
   
   
   
   
-  <div class="ftrd">
+  
+  
+  
+  
+  <!-- Featured -->
+  <div id="featured" class="ftrd">
     <u>
       <h3>Featured</h3>
     </u>
@@ -122,9 +147,8 @@
   </div>
   
   
-  
-  
-  <div class="catg" style="padding: 1.5rem">
+  <!-- Catagory -->
+  <div id="catagory" class="catg" style="padding: 1.5rem">
     <u>
       <h3>Catagory</h3>
     </u>
@@ -140,7 +164,8 @@ gap: .7rem; padding-top: 1rem;">
   </div>
   
   
-  <div class="card text-center">
+  <!-- Space -->
+  <div class="space card text-center">
     <div class="card-header">
     </div>
     <div class="card-body">
@@ -153,8 +178,36 @@ gap: .7rem; padding-top: 1rem;">
   </div>
   
   
+  <!-- Offersection -->
+  <div id="offersection" class="offersec">
+    
+  </div>
   
-  <script src="index.js"> </script>
+  
+  
+  
+  
+  
+  
+  
+  <!-- Contact -->
+  <div class="contactsec">
+    aa
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- Script -->
+  <script src="index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   
 </body>
