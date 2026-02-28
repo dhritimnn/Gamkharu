@@ -4,10 +4,220 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="search.css">
+  <title>Gamkharu-Bajali</title>
 </head>
 
 <body>
+  
+  
+  <!-- Loader -->
+  <div id="loader">
+    <div id="spinner"></div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar navbar-expand-lg" style="padding:10px 30px;">
+    <div class="container-fluid">
+      <img src="img/profile.jpg" style="width: 60px; border-radius: 200px;" alt="">
+      <a class="navbar-brand" href="#" style="display:flex; justify-content: center; align-items: center; font-size: 1.35rem;font-weight: 500;margin: 0;">Gamkharu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav" style="margin-top: 20px;">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown link
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+  <!-- Search -->
+  <div class="searchbox" style="width:100%; display: flex; justify-content: center; align-items: center;
+  position: sticky; top:0; z-index: 10000; inset: 0 0 auto 0; background: white;padding: 1rem 0 1rem 0;
+  "><input type="text" placeholder="Search" style="width:90%; padding: 0.5rem;border-radius: 10px; border: 1px solid #00000055;" autocomplete="off" autofocus>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  <!-- Space -->
+  <div class="space card text-center">
+    <div class="card-header"></div>
+  </div>
+  
+  
+  
+  
+  
+  
+  <div class="dlist">
+    <div class="btns">
+    <a href="">
+      <img src="img/mass/01.png" alt="">
+      <span class="about">
+        <h6>Mekhela Sador #672</h6>
+        <span class="tags">
+          <p>Mekhela Sador</p>
+          <p></p>
+        </span>
+        <h5>299₹</h5>
+      </span>
+    </a>    <a href="">
+      <img src="img/mass/01.png" alt="">
+      <span class="about">
+        <h6>Mekhela Sador #672</h6>
+        <span class="tags">
+          <p>Mekhela Sador</p>
+          <p></p>
+        </span>
+        <h5>299₹</h5>
+      </span>
+    </a>    <a href="">
+      <img src="img/mass/01.png" alt="">
+      <span class="about">
+        <h6>Mekhela Sador #672</h6>
+        <span class="tags">
+          <p>Mekhela Sador</p>
+          <p></p>
+        </span>
+        <h5>299₹</h5>
+      </span>
+    </a>    <a href="">
+      <img src="img/mass/01.png" alt="">
+      <span class="about">
+        <h6>Mekhela Sador #672</h6>
+        <span class="tags">
+          <p>Mekhela Sador</p>
+          <p></p>
+        </span>
+        <h5>299₹</h5>
+      </span>
+    </a>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  <!-- Space -->
+  <div class="space card text-center">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Make your First Order</h5>
+      <p class="card-text"></p>
+      <a href="#" class="btn btn-primary">Contact Us</a>
+    </div>
+    <div class="card-footer text-body-secondary">
+    </div>
+  </div>
+  
+  
+  <!-- Offersection -->
+  <div id="offersection" class="offersec">
+    
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- Contact -->
+  <div class="contactsec">
+    <!-- ─── FOOTER ─── -->
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Gamkharu</div>
+          <p class="footer-desc">Celebrating the rich textile heritage of Assam. We bring you authentic handwoven garments crafted by skilled local artisans with generations of tradition.</p>
+          <div class="footer-social">
+            <a class="social-icon" href="#"><i class="bi bi-facebook"></i></a>
+            <a class="social-icon" href="#"><i class="bi bi-instagram"></i></a>
+            <a class="social-icon" href="#"><i class="bi bi-twitter-x"></i></a>
+            <a class="social-icon" href="#"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+        <!--div class="footer-col">
+      <h5>Help</h5>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Size Guide</a>
+      <a href="#">Track Order</a>
+      <a href="#">Returns & Exchanges</a>
+      <a href="#">FAQs</a>
+    </div-->
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <a href="tel:+919876543210"><i class="bi bi-telephone" style="margin-right:6px"></i>+91 99999 99999</a>
+          <a href="mailto:hello@gamkharu.com"><i class="bi bi-envelope" style="margin-right:6px"></i>xxx@gmail.com</a>
+          <a href="#"><i class="bi bi-geo-alt" style="margin-right:6px"></i>Bajali, Assam, India</a>
+          <div style="margin-top:16px;font-size:13px">
+            <div style="color:#fff;margin-bottom:6px">Working Hours</div>
+            Mon – Sat: 9am – 6pm
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Gamkharu. All rights reserved.</span>
+        <div class="payment-icons">
+          <span style="color:#ffffffaa;font-size:12px;margin-right:6px">We Accept:</span>
+          <span class="payment-icon">UPI</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">MC</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- Script -->
+  <script src="index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   
 </body>
 
