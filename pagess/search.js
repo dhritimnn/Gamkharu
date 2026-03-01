@@ -1,5 +1,5 @@
 // ==========================
-// GLOBAL DATA
+// GLOBAL VARIABLES
 // ==========================
 
 let data = [];
@@ -8,6 +8,7 @@ const searchspace = document.querySelector("#searchspace");
 const searchBtn = document.querySelector("#searchBtn");
 const sortToggle = document.querySelector("#sortToggle");
 const sortPanel = document.querySelector("#sortPanel");
+const suggestionsBox = document.querySelector("#suggestions");
 
 
 // ==========================
@@ -18,17 +19,23 @@ async function products() {
   const response = await fetch("../database/products.json");
   data = await response.json();
   
+  setupSuggestions(); // activate suggestions after data loads
+  
   const query = getQueryParam("q");
   const sort = getQueryParam("sort");
   
+  let result = data;
+  
   if (query) {
     searchspace.value = query;
-    let result = applySearch(query);
-    if (sort) result = applySort(result, sort);
-    display(result);
-  } else {
-    display(data);
+    result = applySearch(query);
   }
+  
+  if (sort) {
+    result = applySort(result, sort);
+  }
+  
+  display(result);
 }
 
 products();
@@ -42,7 +49,7 @@ function display(result) {
   const box = document.querySelector("#slist");
   box.innerHTML = "";
   
-  if (result.length === 0) {
+  if (!result.length) {
     box.innerHTML = "<p>No products found</p>";
     return;
   }
@@ -84,10 +91,10 @@ function applySearch(input) {
 
 
 // ==========================
-// BUTTON SEARCH (WITH RELOAD)
+// BUTTON SEARCH (RELOAD)
 // ==========================
 
-searchBtn.addEventListener("click", function() {
+searchBtn?.addEventListener("click", function() {
   const input = searchspace.value.trim();
   if (!input.length) return;
   
@@ -97,7 +104,7 @@ searchBtn.addEventListener("click", function() {
 
 // ENTER KEY SEARCH
 
-searchspace.addEventListener("keypress", function(e) {
+searchspace?.addEventListener("keypress", function(e) {
   if (e.key === "Enter") {
     searchBtn.click();
   }
@@ -115,7 +122,7 @@ function getQueryParam(key) {
 
 
 // ==========================
-// SORT LOGIC
+// SORTING LOGIC
 // ==========================
 
 function getNumericPrice(price) {
@@ -153,16 +160,12 @@ function applySort(items, type) {
 // SORT PANEL TOGGLE
 // ==========================
 
-if (sortToggle) {
-  sortToggle.addEventListener("click", function() {
-    sortPanel.classList.toggle("active");
-  });
-}
+sortToggle?.addEventListener("click", function() {
+  sortPanel.classList.toggle("active");
+});
 
 
-// ==========================
 // SORT OPTION CLICK
-// ==========================
 
 document.querySelectorAll("#sortPanel p").forEach(option => {
   option.addEventListener("click", function() {
@@ -181,3 +184,57 @@ document.querySelectorAll("#sortPanel p").forEach(option => {
     window.location.href = newURL;
   });
 });
+
+
+// ==========================
+// SUGGESTIONS SYSTEM
+// ==========================
+
+function setupSuggestions() {
+  
+  if (!suggestionsBox) return;
+  
+  searchspace.addEventListener("keyup", function() {
+    
+    let input = this.value.toLowerCase().trim();
+    suggestionsBox.innerHTML = "";
+    
+    if (!input.length) {
+      suggestionsBox.style.display = "none";
+      return;
+    }
+    
+    let words = input.split(" ");
+    
+    let matches = data.filter((item) => {
+      
+      let searchableText = `
+        ${item.name}
+        ${item.tags.join(" ")}
+        ${item.price}
+      `.toLowerCase();
+      
+      return words.every(word => searchableText.includes(word));
+    });
+    
+    matches.slice(0, 5).forEach((item) => {
+      let div = document.createElement("div");
+      div.textContent = item.name;
+      
+      div.addEventListener("click", function() {
+        window.location.href = `?q=${encodeURIComponent(item.name)}`;
+      });
+      
+      suggestionsBox.appendChild(div);
+    });
+    
+    suggestionsBox.style.display = matches.length ? "block" : "none";
+  });
+  
+  // Hide suggestions when clicking outside
+  document.addEventListener("click", function(e) {
+    if (!document.querySelector(".search-box")?.contains(e.target)) {
+      suggestionsBox.style.display = "none";
+    }
+  });
+}
