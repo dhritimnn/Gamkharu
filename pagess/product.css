@@ -1,0 +1,118 @@
+/* ============================= */
+/* GAMKHARU PRODUCT PAGE STYLE  */
+/* ============================= */
+
+:root {
+  --primary: #111111;
+  --accent: #c59d5f;  /* Elegant boutique gold */
+  --soft: #f8f8f8;
+  --border: #eaeaea;
+}
+
+/* Page spacing */
+.product-wrapper {
+  padding: 2rem 1rem;
+  background: #fff;
+}
+
+/* Card style */
+.product-card {
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+}
+
+/* Image */
+.product-card img {
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+/* Product title */
+#productName {
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.5px;
+}
+
+/* Price styling */
+#productPrice {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Description */
+#productDescription {
+  color: #555;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Buttons */
+.product-actions .btn {
+  padding: 0.75rem;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+/* Buy Now */
+.btn-buy {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-buy:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+/* Add to Cart */
+.btn-cart {
+  border: 2px solid var(--primary);
+  background: white;
+  color: var(--primary);
+}
+
+.btn-cart:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Wishlist */
+.btn-wishlist {
+  border: 2px solid var(--accent);
+  background: white;
+  color: var(--accent);
+}
+
+.btn-wishlist:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* Extra Info Card */
+.product-extra {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--soft);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+
+  .product-wrapper {
+    padding: 1rem;
+  }
+
+  #productName {
+    font-size: 1.3rem;
+  }
+
+  #productPrice {
+    font-size: 1.3rem;
+  }
+
+}
