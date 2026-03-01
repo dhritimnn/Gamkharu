@@ -12,7 +12,7 @@ async function featured() {
     (e) => {
       box.innerHTML += `
       <a href=""><img src="
-        ../database/${e.url}" alt=""><span class="about"><h6>${e.name}</h6><span class="tags"><p>${e.tags[0]}</p><p>${e.tags[1]}</p></span><h5>${e.price}</h5></span></a>`;
+        ./database/${e.url}" alt=""><span class="about"><h6>${e.name}</h6><span class="tags"><p>${e.tags[0]}</p><p>${e.tags[1]}</p></span><h5>${e.price}</h5></span></a>`;
     }
   )
   box.innerHTML += `
@@ -37,7 +37,7 @@ async function carousel() {
     (e) => {
       box.innerHTML += `
       <div class="carousel-item active">
-          <img src="../database/${e}" class="d-block w-100" alt="...">
+          <img src="./database/${e}" class="d-block w-100" alt="...">
         </div>
       `
     }
