@@ -61,10 +61,11 @@
 
 .dlist #sortToggle {
   padding: 0.5rem 1rem;
-  color: #C14D1D;
-  background: none;
+  color: white;
+  background: #F7540098;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  border-radius: 20px;
 }
 
 
