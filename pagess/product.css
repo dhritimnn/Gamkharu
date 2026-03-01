@@ -2,8 +2,11 @@
 /* GAMKHARU PRODUCT PAGE STYLE  */
 /* ============================= */
 
+@import url(../roots/root.css);
+
+
 :root {
-  --primary: #111111;
+  --prm: #111111;
   --accent: #c59d5f;  /* Elegant boutique gold */
   --soft: #f8f8f8;
   --border: #eaeaea;
@@ -11,7 +14,7 @@
 
 /* Page spacing */
 .product-wrapper {
-  padding: 2rem 1rem;
+  padding: .5rem 1rem;
   background: #fff;
 }
 
@@ -32,7 +35,7 @@
 /* Product title */
 #productName {
   font-weight: 600;
-  color: var(--primary);
+  color: var(--prm);
   letter-spacing: 0.5px;
 }
 
@@ -60,7 +63,7 @@
 
 /* Buy Now */
 .btn-buy {
-  background: var(--primary);
+  background: var(--prm);
   color: white;
 }
 
@@ -71,13 +74,13 @@
 
 /* Add to Cart */
 .btn-cart {
-  border: 2px solid var(--primary);
+  border: 2px solid var(--prm);
   background: white;
-  color: var(--primary);
+  color: var(--prm);
 }
 
 .btn-cart:hover {
-  background: var(--primary);
+  background: var(--prm);
   color: white;
 }
 
