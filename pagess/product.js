@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     try {
         // 2️⃣ Fetch JSON
-        const response = await fetch("../database/product.json");
+        const response = await fetch("../database/products.json");
         const products = await response.json();
         
         // 3️⃣ Find matching product
