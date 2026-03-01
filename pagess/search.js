@@ -1,6 +1,6 @@
-/*async function featured() {
-  const box = document.querySelector('#ftrdbtns');
-  const response = await fetch("../database/featured.json");
+async function products() {
+  const box = document.querySelector('#slist');
+  const response = await fetch("../database/products.json");
   const data = await response.json(); // Now it's a JS object
   data.forEach(
     (e) => {
@@ -15,7 +15,7 @@
             </h4> </a>
       `
 }
-featured();
+products();
 
 
-*/
+
