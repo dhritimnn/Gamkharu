@@ -1,16 +1,45 @@
+// ==========================
+// GLOBAL DATA
+// ==========================
+
 let data = [];
+
+const searchspace = document.querySelector("#searchspace");
+const searchBtn = document.querySelector("#searchBtn");
+const sortToggle = document.querySelector("#sortToggle");
+const sortPanel = document.querySelector("#sortPanel");
+
+
+// ==========================
+// LOAD PRODUCTS
+// ==========================
 
 async function products() {
   const response = await fetch("../database/products.json");
   data = await response.json();
   
-  display(data); // show all products initially
+  const query = getQueryParam("q");
+  const sort = getQueryParam("sort");
+  
+  if (query) {
+    searchspace.value = query;
+    let result = applySearch(query);
+    if (sort) result = applySort(result, sort);
+    display(result);
+  } else {
+    display(data);
+  }
 }
 
 products();
 
+
+// ==========================
+// DISPLAY FUNCTION
+// ==========================
+
 function display(result) {
-  const box = document.querySelector('#slist');
+  const box = document.querySelector("#slist");
   box.innerHTML = "";
   
   if (result.length === 0) {
@@ -25,138 +54,130 @@ function display(result) {
         <span class="about">
           <h6>${item.name}</h6>
           <span class="tags">
-            <p>${item.tags[0]}</p>
-            <p>${item.tags[1]}</p>
+            ${item.tags.map(tag => `<p>${tag}</p>`).join("")}
           </span>
           <h5>${item.price}</h5>
         </span>
-      </a>`;
+      </a>
+    `;
   });
 }
 
-let searchBtn = document.querySelector('#searchBtn');
-let searchspace = document.querySelector('#searchspace');
+
+// ==========================
+// SEARCH LOGIC
+// ==========================
+
+function applySearch(input) {
+  let words = input.toLowerCase().trim().split(" ");
+  
+  return data.filter((item) => {
+    let searchableText = `
+      ${item.name}
+      ${item.tags.join(" ")}
+      ${item.price}
+    `.toLowerCase();
+    
+    return words.every(word => searchableText.includes(word));
+  });
+}
+
+
+// ==========================
+// BUTTON SEARCH (WITH RELOAD)
+// ==========================
 
 searchBtn.addEventListener("click", function() {
-  let input = searchspace.value.toLowerCase().trim();
+  const input = searchspace.value.trim();
+  if (!input.length) return;
   
-  if (!input.length) {
-    display(data);
-    return;
-  }
-  
-  let words = input.split(" ");
-  
-  let result = data.filter((item) => {
-    let searchableText = `
-      ${item.name}
-      ${item.tags.join(" ")}
-      ${item.price}
-    `.toLowerCase();
-    
-    return words.every(word => searchableText.includes(word));
-  });
-  
-  display(result);
+  window.location.href = `?q=${encodeURIComponent(input)}`;
 });
 
 
+// ENTER KEY SEARCH
 
-
-let suggestionsBox = document.querySelector('#suggestions');
-
-searchspace.addEventListener("keyup", function() {
-  let input = this.value.toLowerCase().trim();
-  suggestionsBox.innerHTML = "";
-  
-  if (!input.length) {
-    suggestionsBox.style.display = "none";
-    return;
+searchspace.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    searchBtn.click();
   }
-  
-  let words = input.split(" ");
-  
-  let matches = data.filter((item) => {
-    let searchableText = `
-      ${item.name}
-      ${item.tags.join(" ")}
-      ${item.price}
-    `.toLowerCase();
-    
-    return words.every(word => searchableText.includes(word));
-  });
-  
-  // Limit to 5 suggestions
-  matches.slice(0, 5).forEach((item) => {
-    let div = document.createElement("div");
-    div.textContent = item.name;
-    
-    div.onclick = function() {
-      searchspace.value = item.name;
-      suggestionsBox.style.display = "none";
-      display([item]); // show only selected product
-    };
-    
-    suggestionsBox.appendChild(div);
-  });
-  
-  suggestionsBox.style.display = matches.length ? "block" : "none";
 });
 
 
+// ==========================
+// URL PARAM READER
+// ==========================
+
+function getQueryParam(key) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(key);
+}
 
 
-
-
-
-
-
-
-
-let sortToggle = document.querySelector("#sortToggle");
-let sortPanel = document.querySelector("#sortPanel");
-
-
+// ==========================
+// SORT LOGIC
+// ==========================
 
 function getNumericPrice(price) {
   return Number(price.replace(/[^0-9.]/g, ""));
 }
 
+function applySort(items, type) {
+  let sorted = [...items];
+  
+  if (type === "low") {
+    sorted.sort((a, b) =>
+      getNumericPrice(a.price) - getNumericPrice(b.price)
+    );
+  }
+  
+  if (type === "high") {
+    sorted.sort((a, b) =>
+      getNumericPrice(b.price) - getNumericPrice(a.price)
+    );
+  }
+  
+  if (type === "az") {
+    sorted.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  
+  if (type === "za") {
+    sorted.sort((a, b) => b.name.localeCompare(a.name));
+  }
+  
+  return sorted;
+}
 
 
+// ==========================
+// SORT PANEL TOGGLE
+// ==========================
+
+if (sortToggle) {
+  sortToggle.addEventListener("click", function() {
+    sortPanel.classList.toggle("active");
+  });
+}
 
 
-sortToggle.addEventListener("click", function() {
-  sortPanel.classList.toggle("active");
-});
+// ==========================
+// SORT OPTION CLICK
+// ==========================
 
 document.querySelectorAll("#sortPanel p").forEach(option => {
   option.addEventListener("click", function() {
     
-    let type = this.dataset.sort;
-    let sortedData = [...data]; // copy array
+    const sortType = this.dataset.sort;
+    const query = getQueryParam("q");
     
-    if (type === "low") {
-      sortedData.sort((a, b) =>
-        getNumericPrice(a.price) - getNumericPrice(b.price)
-      );
+    let newURL = "?";
+    
+    if (query) {
+      newURL += `q=${encodeURIComponent(query)}&`;
     }
     
-    if (type === "high") {
-      sortedData.sort((a, b) =>
-        getNumericPrice(b.price) - getNumericPrice(a.price)
-      );
-    }
+    newURL += `sort=${sortType}`;
     
-    if (type === "az") {
-      sortedData.sort((a, b) => a.name.localeCompare(b.name));
-    }
-    
-    if (type === "za") {
-      sortedData.sort((a, b) => b.name.localeCompare(a.name));
-    }
-    
-    display(sortedData);
-    sortPanel.classList.remove("active");
+    window.location.href = newURL;
   });
 });
