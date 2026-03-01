@@ -18,29 +18,3 @@ async function featured() {
 featured();
 
 
-
-
-
-
-
-async function carousel() {
-  const box = document.querySelector('#crcl');
-  const response = await fetch("../database/carousel.json");
-  const data = await response.json(); // Now it's a JS object
-  data.forEach(
-    (e) => {
-      box.innerHTML += `
-      <div class="carousel-item active">
-          <img src="../database/${e}" class="d-block w-100" alt="...">
-        </div>
-      `
-    }
-  )
-}
-carousel();
-
-
-
-
-  /*      
-*/
