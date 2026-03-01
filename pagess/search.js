@@ -1,4 +1,4 @@
-async function featured() {
+/*async function featured() {
   const box = document.querySelector('#ftrdbtns');
   const response = await fetch("../database/featured.json");
   const data = await response.json(); // Now it's a JS object
@@ -18,3 +18,4 @@ async function featured() {
 featured();
 
 
+*/
