@@ -14,7 +14,9 @@
 
 /* Page spacing */
 .product-wrapper {
+  margin: 0;
   padding: .5rem 1rem;
+  padding-top: 0;
   background: #fff;
 }
 
