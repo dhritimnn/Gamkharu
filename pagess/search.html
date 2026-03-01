@@ -62,7 +62,9 @@
   <!-- Search -->
   <div class="searchbox" style="width:100%; display: flex; justify-content: center; align-items: center;
   position: sticky; top:0; z-index: 10000; inset: 0 0 auto 0; background: white;padding: 1rem 0 1rem 0;
-  "><input type="text" placeholder="Search" style="width:90%; padding: 0.5rem;border-radius: 10px; border: 1px solid #00000055;" autocomplete="off" autofocus id="searchspace">
+  "><input type="text" placeholder="Search" style="width:70%; padding: 0.5rem;border-radius: 10px 0 0 10px; border: 1px solid #00000055;" autocomplete="off" autofocus id="searchspace"> <button style="width:15%; padding: 0.5rem;border-radius: 0 10px 10px 0; border: 1px solid #00000055;" id="searchBtn"> Search </button>
+  
+  <div id="suggestions"></div>
   </div>
   
   
@@ -82,6 +84,8 @@
   
   
   <div class="dlist">
+    <button id="sortToggle">Sort</button>
+
     <div class="btns" id="slist">
       
     </div>
@@ -89,6 +93,24 @@
   
   
   
+  
+  
+  
+
+<div id="sortPanel">
+  <div class="sort-content">
+    <h4>Sort By</h4>
+    <p data-sort="low">Price: Low to High</p>
+    <p data-sort="high">Price: High to Low</p>
+    <p data-sort="az">Name: A to Z</p>
+    <p data-sort="za">Name: Z to A</p>
+  </div>
+</div>
+
+
+
+
+
   
   
   
