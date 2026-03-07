@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/search",
+      "dest": "/search.html"
+    },
+    {
+      "src": "/home",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/cart",
+      "dest": "/cart.html"
+    }
+  ],
+  "env": {
+    "API_URL": "https://your-api.example.com"
+  }
+}
