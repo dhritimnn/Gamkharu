@@ -197,6 +197,48 @@ function initSearchBar() {
   });
 }
 
+
+//init suggestions
+function initSuggestions(products) {
+  const input = document.querySelector('input[type="text"]');
+  const box = document.getElementById('suggestions');
+
+  input.addEventListener('input', () => {
+    const query = input.value.trim();
+    if (!query) { box.style.display = 'none'; return; }
+
+    const matches = products
+      .filter(p => approximateMatch(p.name, query))
+      .slice(0, 6); // max 6 suggestions
+
+    if (matches.length === 0) { box.style.display = 'none'; return; }
+
+    box.innerHTML = matches.map(p => `
+      <div onclick="window.location.href='?q=${encodeURIComponent(p.name)}'"
+        style="padding: 10px 16px; cursor: pointer; display: flex;
+               align-items: center; gap: 12px; border-bottom: 1px solid #f0f0f0;"
+        onmouseover="this.style.background='#fff3f0'"
+        onmouseout="this.style.background='white'">
+        <img src="${p.url}" onerror="this.src='https://picsum.photos/40/40'"
+          style="width:40px; height:40px; object-fit:cover; border-radius:8px;">
+        <div>
+          <div style="font-size:0.9rem;">${p.name}</div>
+          <div style="font-size:0.8rem; color:#FF6435;">${p.price}</div>
+        </div>
+      </div>
+    `).join('');
+
+    box.style.display = 'block';
+  });
+
+  // Hide when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!input.contains(e.target) && !box.contains(e.target)) {
+      box.style.display = 'none';
+    }
+  });
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 let allProducts = [];
@@ -208,7 +250,8 @@ async function init() {
   initSearchBar();
 
   allProducts = await loadProducts();
-
+  initSuggestions(allProducts);
+  
   const params = new URLSearchParams(window.location.search);
   currentQuery = params.get('q') || '';
 
