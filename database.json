@@ -1,19 +1,21 @@
 [
   {
-    "name": "Mekhela Sador #1",
+    "name": "Kapur #1",
     "id": 2,
     "url": "img/mass/01.png",
-    "price": "299$"
+    "price": "299$",
+    "featured": true
   },
   
   {
-    "name": "Riha Sador #1",
+    "name": "Gohona #1",
     "id": 1,
     "url": "img/mass/03.png",
-    "price": "399$"
+    "price": "399$",
+    "featured": true
   },
   {
-    "name": "Gam Sador #1",
+    "name": "Boutique #1",
     "id": 3,
     "url": "img/mass/02.png",
     "price": "399$"

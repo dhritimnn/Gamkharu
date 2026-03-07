@@ -2,8 +2,7 @@
 
 async function loadProducts() {
   const response = await fetch('database.json');
-  const products = await response.json();
-  return products;
+  return await response.json();
 }
 
 // ─── Build a product card HTML string ────────────────────────────────────────
@@ -12,7 +11,8 @@ function buildCard(product) {
   return `
     <div class="col">
       <div class="card rounded-4 w-100 flex-shrink-0">
-        <img src="${product.url}" class="card-img-top rounded-4" alt="${product.name}" onerror="this.src='https://picsum.photos/300/351'">
+        <img src="${product.url}" class="card-img-top rounded-4" alt="${product.name}"
+          onerror="this.src='https://picsum.photos/300/351'">
         <div class="card-body">
           <p class="card-text mb-0">${product.name}</p>
           <h4 class="card-text ml-2">${product.price}</h4>
@@ -43,18 +43,15 @@ function normalize(str) {
   return str.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
-// Phonetic flattening: collapse common sound-alike letter groups so
-// "mekela" and "mekhela" sound identical after this step
 function phonetic(str) {
   return str
     .replace(/kh/g, 'k').replace(/ph/g, 'f').replace(/gh/g, 'g')
     .replace(/sh/g, 's').replace(/th/g, 't').replace(/ch/g, 'c')
     .replace(/ck/g, 'k').replace(/x/g, 'ks')
-    .replace(/[aeiou]+/g, 'a')    // collapse all vowels → 'a'
-    .replace(/(.)\1+/g, '$1');    // remove consecutive duplicate chars
+    .replace(/[aeiou]+/g, 'a')
+    .replace(/(.)\1+/g, '$1');
 }
 
-// Levenshtein edit distance
 function levenshtein(a, b) {
   const m = a.length, n = b.length;
   const dp = Array.from({ length: m + 1 }, (_, i) =>
@@ -68,7 +65,6 @@ function levenshtein(a, b) {
   return dp[m][n];
 }
 
-// How many typos to tolerate based on query word length
 function allowedDist(len) {
   if (len <= 2) return 0;
   if (len <= 4) return 1;
@@ -78,50 +74,42 @@ function allowedDist(len) {
 
 function wordFuzzyMatch(nameWord, queryWord) {
   const maxDist = allowedDist(queryWord.length);
-
-  // 1. Direct Levenshtein on full words
   if (levenshtein(nameWord, queryWord) <= maxDist) return true;
-
-  // 2. Phonetic match — collapses similar-sounding letters before comparing
-  //    This catches: mekela→mekhela, sadhor→sador, riha→riha etc.
   if (levenshtein(phonetic(nameWord), phonetic(queryWord)) <= Math.max(1, maxDist - 1)) return true;
-
-  // 3. Sliding window — fuzzy substring match
-  //    Catches partial typing: "mekhe" should still match "mekhela"
   if (nameWord.length >= queryWord.length) {
     for (let i = 0; i <= nameWord.length - queryWord.length; i++) {
       const slice = nameWord.slice(i, i + queryWord.length);
       if (levenshtein(slice, queryWord) <= maxDist) return true;
     }
   }
-
-  // 4. Prefix fuzzy match — user typed beginning of word with typos
   if (nameWord.length > queryWord.length) {
     const prefix = nameWord.slice(0, queryWord.length);
     if (levenshtein(prefix, queryWord) <= Math.max(1, maxDist - 1)) return true;
   }
-
   return false;
 }
 
 function approximateMatch(productName, query) {
   const name = normalize(productName);
   const q = normalize(query);
-
-  // Fast path: direct substring
   if (name.includes(q)) return true;
-
-  // Every query word must fuzzy-match at least one name word
   const nameWords = name.split(/\s+/).filter(Boolean);
   const queryWords = q.split(/\s+/).filter(Boolean);
-
   return queryWords.every(qWord =>
     nameWords.some(nWord => wordFuzzyMatch(nWord, qWord))
   );
 }
 
+// ─── Filter — handles "featured" as a special keyword ────────────────────────
+
 function filterProducts(products, query) {
   if (!query || query.trim() === '') return products;
+
+  // Special case: show only featured items
+  if (query.trim().toLowerCase() === 'featured') {
+    return products.filter(p => p.featured === true);
+  }
+
   return products.filter(p => approximateMatch(p.name, query));
 }
 
@@ -154,8 +142,6 @@ function initSortToggle() {
   const sortBtn = document.getElementById('sortbtn');
   const closeBtn = sortPanel.querySelector('.btn-outline-danger');
 
-  // Set hidden position IMMEDIATELY (no transition yet) so there's no drop on load.
-  // Two nested rAFs ensure the position is painted first, THEN transition is enabled.
   sortPanel.style.transform = 'translateY(100%)';
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
@@ -185,7 +171,7 @@ function initSearchBar() {
   function doSearch() {
     const val = searchInput.value.trim();
     if (val) {
-      window.location.href = `?q=${encodeURIComponent(val)}`;
+      window.location.href = '?q=' + encodeURIComponent(val);
     } else {
       window.location.href = window.location.pathname;
     }
@@ -197,26 +183,33 @@ function initSearchBar() {
   });
 }
 
+// ─── Suggestions ─────────────────────────────────────────────────────────────
 
-//init suggestions
 function initSuggestions(products) {
   const input = document.querySelector('input[type="text"]');
   const box = document.getElementById('suggestions');
 
   input.addEventListener('input', () => {
     const query = input.value.trim();
-    if (!query) { box.style.display = 'none'; return; }
+
+    if (!query) {
+      box.style.display = 'none';
+      return;
+    }
 
     const matches = products
       .filter(p => approximateMatch(p.name, query))
-      .slice(0, 6); // max 6 suggestions
+      .slice(0, 6);
 
-    if (matches.length === 0) { box.style.display = 'none'; return; }
+    if (matches.length === 0) {
+      box.style.display = 'none';
+      return;
+    }
 
     box.innerHTML = matches.map(p => `
       <div onclick="window.location.href='?q=${encodeURIComponent(p.name)}'"
-        style="padding: 10px 16px; cursor: pointer; display: flex;
-               align-items: center; gap: 12px; border-bottom: 1px solid #f0f0f0;"
+        class="d-flex align-items-center gap-3 px-3 py-2 border-bottom"
+        style="cursor:pointer;"
         onmouseover="this.style.background='#fff3f0'"
         onmouseout="this.style.background='white'">
         <img src="${p.url}" onerror="this.src='https://picsum.photos/40/40'"
@@ -231,7 +224,6 @@ function initSuggestions(products) {
     box.style.display = 'block';
   });
 
-  // Hide when clicking outside
   document.addEventListener('click', (e) => {
     if (!input.contains(e.target) && !box.contains(e.target)) {
       box.style.display = 'none';
@@ -251,15 +243,17 @@ async function init() {
 
   allProducts = await loadProducts();
   initSuggestions(allProducts);
-  
+
   const params = new URLSearchParams(window.location.search);
   currentQuery = params.get('q') || '';
 
   const heading = document.querySelector('.border-bottom');
   if (heading) {
-    heading.textContent = currentQuery
-      ? `Results for "${currentQuery}"`
-      : 'All Items';
+    heading.textContent = currentQuery === 'featured'
+      ? 'Featured Items'
+      : currentQuery
+        ? 'Results for "' + currentQuery + '"'
+        : 'All Items';
   }
 
   let displayed = filterProducts(allProducts, currentQuery);
@@ -271,7 +265,6 @@ async function init() {
   sortButtons.forEach((btn, i) => {
     btn.addEventListener('click', () => {
       currentSort = sortMap[i];
-
       sortButtons.forEach(b => b.classList.remove('fw-bold', 'text-danger'));
       btn.classList.add('fw-bold', 'text-danger');
 

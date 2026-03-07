@@ -1,0 +1,188 @@
+// ─── Load data ───────────────────────────────────────────────────────────────
+
+async function loadDatabase() {
+  const response = await fetch('database.json');
+  return await response.json();
+}
+
+// ─── Build a featured card ────────────────────────────────────────────────────
+
+function buildFeaturedCard(product) {
+  return `
+    <div class="card rounded-4 flex-shrink-0" style="width: 12rem; cursor: pointer;"
+      onclick="window.location.href='search?q=${encodeURIComponent(product.name)}'">
+      <img src="${product.url}" class="card-img-top rounded-4" alt="${product.name}"
+        onerror="this.src='https://picsum.photos/300/351'">
+      <div class="card-body">
+        <p class="card-text mb-0">${product.name}</p>
+        <p class="card-text" style="color:#FF6435;">${product.price}</p>
+      </div>
+    </div>
+  `;
+}
+
+// ─── Build the "Explore More" card ───────────────────────────────────────────
+
+function buildExploreCard() {
+  return `
+    <div class="card rounded-4 flex-shrink-0 d-flex align-items-center justify-content-center"
+      style="width: 12rem; min-height: 16rem; cursor: pointer; background: rgba(255,255,255,0.15); border: 2px dashed white;"
+      onclick="window.location.href='search?q=featured'">
+      <div class="text-center text-white p-3">
+        <div style="font-size: 2rem;">→</div>
+        <p class="mt-2 fw-bold">Explore More</p>
+      </div>
+    </div>
+  `;
+}
+
+// ─── Render featured items ────────────────────────────────────────────────────
+
+function renderFeatured(products) {
+  const container = document.getElementById('featured');
+  const featuredItems = products.filter(p => p.featured === true);
+
+  if (featuredItems.length === 0) {
+    container.innerHTML = `<p class="text-white">No featured items yet.</p>`;
+    return;
+  }
+
+  container.innerHTML = featuredItems.map(buildFeaturedCard).join('') + buildExploreCard();
+}
+
+// ─── Fuzzy search (same as search.js) ────────────────────────────────────────
+
+function normalize(str) {
+  return str.toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function phonetic(str) {
+  return str
+    .replace(/kh/g, 'k').replace(/ph/g, 'f').replace(/gh/g, 'g')
+    .replace(/sh/g, 's').replace(/th/g, 't').replace(/ch/g, 'c')
+    .replace(/ck/g, 'k').replace(/x/g, 'ks')
+    .replace(/[aeiou]+/g, 'a')
+    .replace(/(.)\1+/g, '$1');
+}
+
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  const dp = Array.from({ length: m + 1 }, (_, i) =>
+    Array.from({ length: n + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0))
+  );
+  for (let i = 1; i <= m; i++)
+    for (let j = 1; j <= n; j++)
+      dp[i][j] = a[i-1] === b[j-1]
+        ? dp[i-1][j-1]
+        : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+  return dp[m][n];
+}
+
+function allowedDist(len) {
+  if (len <= 2) return 0;
+  if (len <= 4) return 1;
+  if (len <= 7) return 2;
+  return 3;
+}
+
+function wordFuzzyMatch(nameWord, queryWord) {
+  const maxDist = allowedDist(queryWord.length);
+  if (levenshtein(nameWord, queryWord) <= maxDist) return true;
+  if (levenshtein(phonetic(nameWord), phonetic(queryWord)) <= Math.max(1, maxDist - 1)) return true;
+  if (nameWord.length >= queryWord.length) {
+    for (let i = 0; i <= nameWord.length - queryWord.length; i++) {
+      const slice = nameWord.slice(i, i + queryWord.length);
+      if (levenshtein(slice, queryWord) <= maxDist) return true;
+    }
+  }
+  if (nameWord.length > queryWord.length) {
+    const prefix = nameWord.slice(0, queryWord.length);
+    if (levenshtein(prefix, queryWord) <= Math.max(1, maxDist - 1)) return true;
+  }
+  return false;
+}
+
+function approximateMatch(productName, query) {
+  const name = normalize(productName);
+  const q = normalize(query);
+  if (name.includes(q)) return true;
+  const nameWords = name.split(/\s+/).filter(Boolean);
+  const queryWords = q.split(/\s+/).filter(Boolean);
+  return queryWords.every(qWord =>
+    nameWords.some(nWord => wordFuzzyMatch(nWord, qWord))
+  );
+}
+
+// ─── Suggestions ─────────────────────────────────────────────────────────────
+
+function initSuggestions(products) {
+  const input = document.querySelector('input[type="text"]');
+  const box = document.getElementById('suggestions');
+
+  input.addEventListener('input', () => {
+    const query = input.value.trim();
+
+    if (!query) {
+      box.style.display = 'none';
+      return;
+    }
+
+    const matches = products
+      .filter(p => approximateMatch(p.name, query))
+      .slice(0, 6);
+
+    if (matches.length === 0) {
+      box.style.display = 'none';
+      return;
+    }
+
+    box.innerHTML = matches.map(p => `
+      <div onclick="window.location.href='search?q=${encodeURIComponent(p.name)}'"
+        class="d-flex align-items-center gap-3 px-3 py-2 border-bottom"
+        style="cursor:pointer;"
+        onmouseover="this.style.background='#fff3f0'"
+        onmouseout="this.style.background='white'">
+        <img src="${p.url}" onerror="this.src='https://picsum.photos/40/40'"
+          style="width:40px; height:40px; object-fit:cover; border-radius:8px;">
+        <div>
+          <div style="font-size:0.9rem;">${p.name}</div>
+          <div style="font-size:0.8rem; color:#FF6435;">${p.price}</div>
+        </div>
+      </div>
+    `).join('');
+
+    box.style.display = 'block';
+  });
+
+  // Hide when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!input.contains(e.target) && !box.contains(e.target)) {
+      box.style.display = 'none';
+    }
+  });
+
+  // Search on button click or Enter
+  const searchButton = document.getElementById('button-addon2');
+
+  function doSearch() {
+    const val = input.value.trim();
+    if (val) {
+      window.location.href = 'search?q=' + encodeURIComponent(val);
+    }
+  }
+
+  searchButton.addEventListener('click', doSearch);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') doSearch();
+  });
+}
+
+// ─── Main ─────────────────────────────────────────────────────────────────────
+
+async function init() {
+  const products = await loadDatabase();
+  renderFeatured(products);
+  initSuggestions(products);
+}
+
+document.addEventListener('DOMContentLoaded', init);
