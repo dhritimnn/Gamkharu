@@ -9,6 +9,8 @@
   <meta name="author" content="Gamkharu">
   <meta name="theme-color" content="light-theme">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:ital,wght@0,400..900;1,400..900&display=swap');
     
@@ -59,6 +61,7 @@
       </div>
     </div>
   </nav>
+  
   <div class="input-group p-3 bg-white sticky-top">
     <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
@@ -88,9 +91,16 @@
     <button class="btn btn-outline-danger p-2 w-100" id="sortbtn">Sort Items</button>
   </div>
   <div class="position-fixed w-100 bottom-0 p-4 bg-warning" style="height: 40dvh" id="sortlist">
-    <div class="">
-      <h3 class="border-bottom border-dark">Sort Items </h3>
-    <button class="btn btn-outline-danger pl-2 pr-2"><i class="bi bi-x"></i></button>
+    <div class="d-flex flex-row gap-4">
+      <h3 class="border-bottom border-dark w-100">Sort Items </h3>
+    <button class="btn btn-outline-danger px-4"><i class="bi bi-x" style="font-size:1.5rem; font-weight: 600;"></i></button>
+    </div>
+    
+    <div class="p-4 d-flex flex-column gap-3">
+      <button class="btn w-100 text-start">Price: High to low</button>
+      <button class="btn w-100 text-start">Price: Low to high</button>
+      <button class="btn w-100 text-start">Sort: A-Z</button>
+      <button class="btn w-100 text-start">Sort: Z-A</button>
     </div>
   </div>
 
@@ -117,6 +127,9 @@
   <br><br><br><br><br><br>
   <br><br><br><br><br><br>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="js/search.js"></script>
+
 </body>
 
 </html>
