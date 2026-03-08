@@ -100,17 +100,23 @@ function approximateMatch(productName, query) {
   );
 }
 
-// ─── Filter — handles "featured" as a special keyword ────────────────────────
+// ─── Tag match — exact match against space-separated cat tags ─────────────────
+
+function tagMatch(product, query) {
+  if (!product.cat) return false;
+  const tags = product.cat.toLowerCase().split(/\s+/).filter(Boolean);
+  const q = query.trim().toLowerCase();
+  return tags.includes(q);
+}
+
+// ─── Filter — checks tags first, then falls back to name fuzzy search ─────────
 
 function filterProducts(products, query) {
   if (!query || query.trim() === '') return products;
 
-  // Special case: show only featured items
-  if (query.trim().toLowerCase() === 'featured') {
-    return products.filter(p => p.featured === true);
-  }
-
-  return products.filter(p => approximateMatch(p.name, query));
+  return products.filter(p =>
+    tagMatch(p, query) || approximateMatch(p.name, query)
+  );
 }
 
 // ─── Sort logic ───────────────────────────────────────────────────────────────
@@ -198,7 +204,7 @@ function initSuggestions(products) {
     }
 
     const matches = products
-      .filter(p => approximateMatch(p.name, query))
+      .filter(p => tagMatch(p, query) || approximateMatch(p.name, query))
       .slice(0, 6);
 
     if (matches.length === 0) {
@@ -249,11 +255,9 @@ async function init() {
 
   const heading = document.querySelector('.border-bottom');
   if (heading) {
-    heading.textContent = currentQuery === 'featured'
-      ? 'Featured Items'
-      : currentQuery
-        ? 'Results for "' + currentQuery + '"'
-        : 'All Items';
+    heading.textContent = currentQuery
+      ? 'Results for "' + currentQuery + '"'
+      : 'All Items';
   }
 
   let displayed = filterProducts(allProducts, currentQuery);
