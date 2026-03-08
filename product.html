@@ -11,7 +11,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:ital,wght@0,400..900;1,400..900&display=swap');
-
+    
     * {
       margin: 0;
       padding: 0;
@@ -20,7 +20,7 @@
     
     .imgp {
       object-fit: cover;
-      height: 30dvh;
+      height: 60dvh; 
       width: 100%;
     }
   </style>
@@ -63,56 +63,39 @@
       </div>
     </div>
   </nav>
-  <div class="input-group p-3 bg-white sticky-top">
-    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-    
-    <div id="suggestions" class="position-absolute w-100 bg-white rounded-bottom shadow overflow-hidden" style="top: 100%; left: 0; z-index: 999;" style="display:none"></div>
-    
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-  </div>
-  <div id="carouselExampleSlidesOnly" class="carousel slide m-3 pb-4" data-bs-ride="carousel">
-    <div class="carousel-inner rounded-4">
-      <div class="carousel-item active">
-        <img src="https://picsum.photos/400/251" class="d-block w-100 imgp">
-      </div>
-      <div class="carousel-item">
-        <img src="https://picsum.photos/400/250" class="d-block w-100 imgp">
-      </div>
-      <div class="carousel-item">
-        <img src="https://picsum.photos/400/249" class="d-block w-100 imgp">
-      </div>
+
+<div id="carouselExampleSlidesOnly" class="carousel slide m-3" data-bs-ride="carousel">
+  <div class="carousel-inner rounded-4 position-relative">
+    <div class="carousel-item active">
+      <img src="https://picsum.photos/400/251" class="d-block w-100 imgp">
+    </div>
+    <div class="carousel-item">
+      <img src="https://picsum.photos/400/250" class="d-block w-100 imgp">
+    </div>
+
+    <!-- Gradient fade overlay -->
+    <div class="position-absolute bottom-0 start-0 end-0 rounded-bottom-4 pe-none"
+      style="height:60px; background:linear-gradient(to top, rgba(0,0,0,0.55), transparent);">
     </div>
   </div>
-  
-  
-  
-  <div class="p-4" style="background: #FF6435;">
-    <h2 class="fw-seminormal border-bottom pb-2 text-white">Featured</h2>
-    <div class="pt-4 pb-4 d-flex overflow-x-scroll gap-4 w-100" id="featured">
-      
-      
-      <div class="card rounded-4 flex-shrink-0" style="width: 12rem;">
-        <img src="https://picsum.photos/300/351" class="card-img-top rounded-4" alt="...">
-        <div class="card-body">
-          <p class="card-text">Some quick text</p>
-        </div>
-      </div>
-      
-      
-    </div>
+
+  <!-- Dot indicators -->
+  <div class="carousel-indicators m-0 pb-2">
+    <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="0"
+      aria-current="true" aria-label="Slide 1" class="active rounded-circle border-0 p-0"
+      style="width:10px; height:10px; background-color:rgba(255,255,255,0.5);">
+    </button>
+    <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="1"
+      aria-label="Slide 2" class="rounded-circle border-0 p-0"
+      style="width:10px; height:10px; background-color:rgba(255,255,255,0.5);">
+    </button>
   </div>
+</div>
+
   
   
-  
-  <div class="p-4" id="catagory">
-    <h2 class="fw-seminormal border-bottom pb-2">Catagories</h2>
-    <div class="row row-cols-2 gx-3 gy-2 pt-3">
-      <div class="col"><button class="btn btn-outline-secondary text-dark w-100 p-2">Hello</button></div>
-      <div class="col"><button class="btn btn-outline-secondary text-dark w-100 p-2">Hello</button></div>
-      <div class="col"><button class="btn btn-outline-secondary text-dark w-100 p-2">Hello</button></div>
-      <div class="col"><button class="btn btn-outline-secondary text-dark w-100 p-2">Hello</button></div>
-    </div>
-  </div>
+
+
   <br><br><br><br><br><br>
   <br><br><br><br><br><br>
   <br><br><br><br><br><br>
