@@ -27,7 +27,7 @@ function buildExploreCard() {
   return `
     <div class="card rounded-4 flex-shrink-0 d-flex align-items-center justify-content-center"
       style="width: 12rem; min-height: 16rem; cursor: pointer; background: rgba(255,255,255,0.15); border: 2px dashed white;"
-      onclick="window.location.href='search?q=featured'">
+      onclick="window.location.href='search.html'">
       <div class="text-center text-white p-3">
         <div style="font-size: 2rem;">→</div>
         <p class="mt-2 fw-bold">Explore More</p>
@@ -40,7 +40,9 @@ function buildExploreCard() {
 
 function renderFeatured(products) {
   const container = document.getElementById('featured');
-  const featuredItems = products.filter(p => p.featured === true);
+  const featuredItems = products.filter(p =>
+    p.cat && p.cat.toLowerCase().split(/\s+/).includes('featured')
+  );
 
   if (featuredItems.length === 0) {
     container.innerHTML = `<p class="text-white">No featured items yet.</p>`;
@@ -50,7 +52,7 @@ function renderFeatured(products) {
   container.innerHTML = featuredItems.map(buildFeaturedCard).join('') + buildExploreCard();
 }
 
-// ─── Fuzzy search (same as search.js) ────────────────────────────────────────
+// ─── Fuzzy search ────────────────────────────────────────────────────────────
 
 function normalize(str) {
   return str.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -154,14 +156,12 @@ function initSuggestions(products) {
     box.style.display = 'block';
   });
 
-  // Hide when clicking outside
   document.addEventListener('click', (e) => {
     if (!input.contains(e.target) && !box.contains(e.target)) {
       box.style.display = 'none';
     }
   });
 
-  // Search on button click or Enter
   const searchButton = document.getElementById('button-addon2');
 
   function doSearch() {
