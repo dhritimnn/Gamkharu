@@ -115,14 +115,22 @@ function renderCartButton(product) {
   const goBtn = document.getElementById('go-to-cart-btn');
   
   function updateState() {
-    if (isInCart(product.id)) {
-      addBtn.style.display = 'none';
-      goBtn.style.display = '';
-    } else {
-      addBtn.style.display = '';
-      goBtn.style.display = 'none';
-    }
+  if (isInCart(product.id)) {
+    addBtn.style.opacity = '0';
+    addBtn.style.transform = 'scale(0.9)';
+    addBtn.style.pointerEvents = 'none';
+    goBtn.style.opacity = '1';
+    goBtn.style.transform = 'scale(1)';
+    goBtn.style.pointerEvents = '';
+  } else {
+    addBtn.style.opacity = '1';
+    addBtn.style.transform = 'scale(1)';
+    addBtn.style.pointerEvents = '';
+    goBtn.style.opacity = '0';
+    goBtn.style.transform = 'scale(0.9)';
+    goBtn.style.pointerEvents = 'none';
   }
+}
   
   updateState();
   
