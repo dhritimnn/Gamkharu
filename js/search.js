@@ -9,7 +9,7 @@ async function loadProducts() {
 
 function buildCard(product) {
   return `
-    <div class="col">
+    <div class="col" onclick="window.location.href='product.html?id=${product.id}'" style="cursor:pointer;">
       <div class="card rounded-4 w-100 flex-shrink-0">
         <img src="${product.url}" class="card-img-top rounded-4" alt="${product.name}"
           onerror="this.src='https://picsum.photos/300/351'">
@@ -21,7 +21,6 @@ function buildCard(product) {
     </div>
   `;
 }
-
 // ─── Render products into #container ─────────────────────────────────────────
 
 function renderProducts(products) {
@@ -213,7 +212,7 @@ function initSuggestions(products) {
     }
 
     box.innerHTML = matches.map(p => `
-      <div onclick="window.location.href='?q=${encodeURIComponent(p.name)}'"
+      <div onclick="window.location.href='search?q=${encodeURIComponent(p.name)}'"
         class="d-flex align-items-center gap-3 px-3 py-2 border-bottom"
         style="cursor:pointer;"
         onmouseover="this.style.background='#fff3f0'"

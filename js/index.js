@@ -10,7 +10,7 @@ async function loadDatabase() {
 function buildFeaturedCard(product) {
   return `
     <div class="card rounded-4 flex-shrink-0" style="width: 12rem; cursor: pointer;"
-      onclick="window.location.href='search?q=${encodeURIComponent(product.name)}'">
+      onclick="window.location.href='product.html?id=${product.id}'">
       <img src="${product.url}" class="card-img-top rounded-4" alt="${product.name}"
         onerror="this.src='https://picsum.photos/300/351'">
       <div class="card-body">
