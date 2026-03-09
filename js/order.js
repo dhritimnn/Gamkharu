@@ -99,9 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
   loadFormData();
   
   const form = document.getElementById('zoho-form');
-  form.addEventListener('submit', (e) => {
-  fillOrderDetails();
-  saveFormData();
-  document.querySelector('[name="zf_redirect_url"]').value = window.location.origin + '/thankyou';
-});
+  form.addEventListener('submit', () => {
+    fillOrderDetails();
+    saveFormData();
+    document.querySelector('[name="zf_redirect_url"]').value = window.location.origin + '/thankyou';
+  });
 });
