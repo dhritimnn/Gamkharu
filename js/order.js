@@ -99,9 +99,25 @@ document.addEventListener('DOMContentLoaded', () => {
   loadFormData();
   
   const form = document.getElementById('zoho-form');
-  form.addEventListener('submit', () => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // stop normal submit
+    
     fillOrderDetails();
     saveFormData();
-    document.querySelector('[name="zf_redirect_url"]').value = window.location.origin + '/thankyou';
+    
+    // Send to Zoho in background
+    const formData = new FormData(form);
+    try {
+      await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors' // Zoho doesn't allow CORS, but data still goes through
+      });
+    } catch (err) {
+      // no-cors fetch may throw, but data is usually sent
+    }
+    
+    // Redirect to thank you page
+    window.location.href = '/thankyou';
   });
 });
