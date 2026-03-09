@@ -168,7 +168,7 @@ function renderSuggestions(product, allProducts) {
     <div class="card rounded-4 flex-shrink-0 suggestion-card" style="width:10rem;"
       onclick="window.location.href='product.html?id=${p.id}'">
       <img src="${p.url}" class="card-img-top rounded-4"
-        style="height:120px; object-fit:cover;"
+        style="height:170px; object-fit:cover;"
         alt="${p.name}" onerror="this.src='https://picsum.photos/300/351'">
       <div class="card-body p-2">
         <p class="mb-0" style="font-size:0.85rem;">${p.name}</p>

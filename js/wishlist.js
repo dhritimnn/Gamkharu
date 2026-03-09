@@ -58,7 +58,7 @@ async function renderWishlist() {
         </button>
 
         <img src="${product.url}" class="card-img-top rounded-4"
-          style="height:160px; object-fit:cover;"
+          style="height:200px; object-fit:cover;"
           alt="${product.name}"
           onerror="this.src='https://picsum.photos/300/351'">
         <div class="card-body p-2">
