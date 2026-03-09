@@ -30,7 +30,7 @@ function renderCart() {
   const countEl = document.getElementById('item-count');
   const subtotalEl = document.getElementById('subtotal');
   const totalEl = document.getElementById('total');
-
+  
   if (cart.length === 0) {
     emptyEl.style.display = 'block';
     listEl.style.display = 'none';
@@ -39,13 +39,13 @@ function renderCart() {
     countEl.textContent = '';
     return;
   }
-
+  
   emptyEl.style.display = 'none';
   listEl.style.display = 'block';
   summaryEl.style.display = 'block';
   buyEl.style.display = 'block';
   countEl.textContent = cart.length + ' item' + (cart.length > 1 ? 's' : '');
-
+  
   listEl.innerHTML = cart.map(item => `
     <div class="cart-item d-flex align-items-center gap-3 p-3 mb-2 rounded-4 bg-white shadow-sm" data-id="${item.id}">
       <img src="${item.url}" onerror="this.src='https://picsum.photos/80/80'"
@@ -59,7 +59,7 @@ function renderCart() {
       </button>
     </div>
   `).join('');
-
+  
   // Calculate total
   const total = cart.reduce((sum, item) => sum + parsePrice(item.price), 0);
   subtotalEl.textContent = '₹' + total.toLocaleString('en-IN');
