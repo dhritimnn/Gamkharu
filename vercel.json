@@ -7,6 +7,7 @@
     { "source": "/product", "destination": "product.html" },
     { "source": "/cart", "destination": "cart.html" },
     { "source": "/order", "destination": "order.html" },
+    { "source": "/thankyou", "destination": "thankyou.html" },
     { "source": "/wishlist", "destination": "wishlist.html" }
   ]
 }
