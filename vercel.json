@@ -4,6 +4,9 @@
     { "source": "/search", "destination": "search.html" },
     { "source": "/contact", "destination": "contact.html" },
     { "source": "/aboutus", "destination": "about.html" },
-    { "source": "/cart", "destination": "/pagess/cart.html" }
+    { "source": "/product", "destination": "product.html" },
+    { "source": "/cart", "destination": "cart.html" },
+    { "source": "/order", "destination": "order.html" },
+    { "source": "/wishlist", "destination": "wishlist.html" }
   ]
 }
