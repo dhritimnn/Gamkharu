@@ -60,13 +60,47 @@ function fillOrderDetails() {
   document.getElementById('order-details-hidden').value = lines.join('\n');
 }
 
-// ─── On form submit, fill details then allow submit ───────────────────────────
+// ─── Save form data to localStorage ──────────────────────────────────────────
+
+function saveFormData() {
+  const data = {
+    firstName: document.querySelector('[name="Name_First"]').value,
+    lastName: document.querySelector('[name="Name_Last"]').value,
+    phone: document.querySelector('[name="PhoneNumber_countrycode"]').value,
+    address1: document.querySelector('[name="Address_AddressLine1"]').value,
+    address2: document.querySelector('[name="Address_AddressLine2"]').value,
+    city: document.querySelector('[name="Address_City"]').value,
+    region: document.querySelector('[name="Address_Region"]').value,
+    zip: document.querySelector('[name="Address_ZipCode"]').value,
+  };
+  localStorage.setItem('gk_user_info', JSON.stringify(data));
+}
+
+// ─── Pre-fill form from localStorage ─────────────────────────────────────────
+
+function loadFormData() {
+  try {
+    const data = JSON.parse(localStorage.getItem('gk_user_info') || '{}');
+    if (data.firstName) document.querySelector('[name="Name_First"]').value = data.firstName;
+    if (data.lastName) document.querySelector('[name="Name_Last"]').value = data.lastName;
+    if (data.phone) document.querySelector('[name="PhoneNumber_countrycode"]').value = data.phone;
+    if (data.address1) document.querySelector('[name="Address_AddressLine1"]').value = data.address1;
+    if (data.address2) document.querySelector('[name="Address_AddressLine2"]').value = data.address2;
+    if (data.city) document.querySelector('[name="Address_City"]').value = data.city;
+    if (data.region) document.querySelector('[name="Address_Region"]').value = data.region;
+    if (data.zip) document.querySelector('[name="Address_ZipCode"]').value = data.zip;
+  } catch {}
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
   renderOrderSummary();
+  loadFormData();
   
   const form = document.getElementById('zoho-form');
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', () => {
     fillOrderDetails();
+    saveFormData();
   });
 });
