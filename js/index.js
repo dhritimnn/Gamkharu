@@ -1,19 +1,18 @@
-// ─── Load data ───────────────────────────────────────────────────────────────
-
+// ── Load data ──
 async function loadDatabase() {
   const response = await fetch('database.json');
   return await response.json();
 }
 
-// ─── Tag match ────────────────────────────────────────────────────────────────
 
+// ─── Tag match ───
 function tagMatch(product, tag) {
   if (!product.cat) return false;
   return product.cat.toLowerCase().split(/\s+/).includes(tag.toLowerCase());
 }
 
-// ─── Build a featured card ────────────────────────────────────────────────────
 
+// ─── Build a featured card ───
 function buildFeaturedCard(product) {
   return `
     <div class="card rounded-4 flex-shrink-0" style="width: 11.5rem; cursor: pointer; height: 18rem;"
@@ -28,8 +27,8 @@ function buildFeaturedCard(product) {
   `;
 }
 
-// ─── Build the "Explore More" card ───────────────────────────────────────────
 
+// ─── Build the "Explore More" card ────
 function buildExploreCard() {
   return `
     <div class="card rounded-4 flex-shrink-0 d-flex align-items-center justify-content-center"
@@ -44,8 +43,7 @@ function buildExploreCard() {
 }
 
 
-// ─── Build the "Explore More of Catagory" card ───────────────────────────────────────────
-
+// ─── Build the "Explore More of Catagory" card ──
 function buildCatExploreCard(tag) {
   return `
     <div class="col">
@@ -60,24 +58,25 @@ function buildCatExploreCard(tag) {
     </div>
   `;
 }
-// ─── Render featured items ────────────────────────────────────────────────────
 
+
+// ─── Render featured items ────
 function renderFeatured(products) {
   const container = document.getElementById('featured');
   const featuredItems = products.filter(p =>
     p.cat && p.cat.toLowerCase().split(/\s+/).includes('featured')
   );
-
+  
   if (featuredItems.length === 0) {
     container.innerHTML = `<p class="text-white">No featured items yet.</p>`;
     return;
   }
-
+  
   container.innerHTML = featuredItems.map(buildFeaturedCard).join('') + buildExploreCard();
 }
 
-// ─── Build a category section card (2-col grid) ───────────────────────────────
 
+// ─── Build a category section card (2-col grid) ───
 function buildCatCard(product) {
   return `
     <div class="col">
@@ -93,8 +92,8 @@ function buildCatCard(product) {
   `;
 }
 
-// ─── Render all category product sections ────────────────────────────────────
 
+// ─── Render all category product sections ───
 function renderCatSections(products) {
   const sections = document.querySelectorAll('[data-tag]');
   
@@ -116,8 +115,8 @@ function renderCatSections(products) {
   });
 }
 
-// ─── Fuzzy search ────────────────────────────────────────────────────────────
 
+// ─── Fuzzy search ───
 function normalize(str) {
   return str.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
@@ -132,15 +131,16 @@ function phonetic(str) {
 }
 
 function levenshtein(a, b) {
-  const m = a.length, n = b.length;
+  const m = a.length,
+    n = b.length;
   const dp = Array.from({ length: m + 1 }, (_, i) =>
     Array.from({ length: n + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0))
   );
   for (let i = 1; i <= m; i++)
     for (let j = 1; j <= n; j++)
-      dp[i][j] = a[i-1] === b[j-1]
-        ? dp[i-1][j-1]
-        : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+      dp[i][j] = a[i - 1] === b[j - 1] ?
+      dp[i - 1][j - 1] :
+      1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
   return dp[m][n];
 }
 
@@ -179,23 +179,23 @@ function approximateMatch(productName, query) {
   );
 }
 
-// ─── Suggestions ─────────────────────────────────────────────────────────────
 
+// ─── Suggestions ────
 function initSuggestions(products) {
   const input = document.querySelector('input[type="text"]');
   const box = document.getElementById('suggestions');
-
+  
   input.addEventListener('input', () => {
     const query = input.value.trim();
-
+    
     if (!query) { box.style.display = 'none'; return; }
-
+    
     const matches = products
       .filter(p => approximateMatch(p.name, query))
       .slice(0, 6);
-
+    
     if (matches.length === 0) { box.style.display = 'none'; return; }
-
+    
     box.innerHTML = matches.map(p => `
       <div onclick="window.location.href='product.html?id=${p.id}'"
         class="d-flex align-items-center gap-3 px-3 py-2 border-bottom"
@@ -210,30 +210,34 @@ function initSuggestions(products) {
         </div>
       </div>
     `).join('');
-
+    
     box.style.display = 'block';
   });
-
+  
   document.addEventListener('click', (e) => {
     if (!input.contains(e.target) && !box.contains(e.target)) {
       box.style.display = 'none';
     }
   });
-
+  
   const searchButton = document.getElementById('button-addon2');
-
+  
   function doSearch() {
     const val = input.value.trim();
     if (val) window.location.href = 'search?q=' + encodeURIComponent(val);
   }
-
+  
   searchButton.addEventListener('click', doSearch);
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') doSearch();
   });
 }
 
-// ─── Main ─────────────────────────────────────────────────────────────────────
+
+
+
+
+// ─── Main ───
 
 async function init() {
   const products = await loadDatabase();

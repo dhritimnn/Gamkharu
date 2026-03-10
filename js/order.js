@@ -1,5 +1,4 @@
-// ─── Cart helpers ─────────────────────────────────────────────────────────────
-
+// ─── Cart helpers ───
 function getCart() {
   try { return JSON.parse(localStorage.getItem('cart') || '[]'); } catch { return []; }
 }
@@ -8,8 +7,8 @@ function parsePrice(priceStr) {
   return parseFloat(String(priceStr).replace(/[^0-9.]/g, '')) || 0;
 }
 
-// ─── Render order summary ─────────────────────────────────────────────────────
 
+// ─── Render order summary ───
 function renderOrderSummary() {
   const cart = getCart();
   const itemsEl = document.getElementById('order-items');
@@ -41,8 +40,8 @@ function renderOrderSummary() {
   totalEl.textContent = '₹' + total.toLocaleString('en-IN');
 }
 
-// ─── Auto-fill hidden Zoho textarea ──────────────────────────────────────────
 
+// ─── Auto-fill hidden Zoho textarea ────
 function fillOrderDetails() {
   const cart = getCart();
   if (cart.length === 0) return;
@@ -60,8 +59,8 @@ function fillOrderDetails() {
   document.getElementById('order-details-hidden').value = lines.join('\n');
 }
 
-// ─── Save form data to localStorage ──────────────────────────────────────────
 
+// ─── Save form data to localStorage ───
 function saveFormData() {
   const data = {
     firstName: document.querySelector('[name="Name_First"]').value,
@@ -76,8 +75,8 @@ function saveFormData() {
   localStorage.setItem('gk_user_info', JSON.stringify(data));
 }
 
-// ─── Pre-fill form from localStorage ─────────────────────────────────────────
 
+// ─── Pre-fill form from localStorage ────
 function loadFormData() {
   try {
     const data = JSON.parse(localStorage.getItem('gk_user_info') || '{}');
@@ -92,8 +91,8 @@ function loadFormData() {
   } catch {}
 }
 
-// ─── Init ─────────────────────────────────────────────────────────────────────
 
+// ─── Init ────
 document.addEventListener('DOMContentLoaded', () => {
   renderOrderSummary();
   loadFormData();

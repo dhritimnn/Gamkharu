@@ -1,4 +1,4 @@
-// ─── Gamkharu Loader ─────────────────────────────────────────────────────────
+// ─── Gamkharu Loader ───
 
 (function() {
   // Inject styles
@@ -52,6 +52,7 @@
   `;
   document.head.appendChild(style);
   
+  
   // Inject loader HTML
   const loader = document.createElement('div');
   loader.id = 'gk-loader';
@@ -64,6 +65,7 @@
     <div class="gk-brand">GAMKHARU</div>
   `;
   document.body.appendChild(loader);
+  
   
   // Hide on page load
   window.addEventListener('load', () => {

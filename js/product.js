@@ -1,12 +1,11 @@
-// ─── Load database ────────────────────────────────────────────────────────────
-
+// ─── Load database ────
 async function loadDatabase() {
   const response = await fetch('database.json');
   return await response.json();
 }
 
-// ─── Cart helpers (localStorage) ─────────────────────────────────────────────
 
+// ─── Cart helpers (localStorage) ────
 function getCart() {
   try { return JSON.parse(localStorage.getItem('cart') || '[]'); } catch { return []; }
 }
@@ -27,8 +26,8 @@ function addToCart(product) {
   }
 }
 
-// ─── Wishlist helpers (localStorage) ─────────────────────────────────────────
 
+// ─── Wishlist helpers (localStorage) ───
 function getWishlist() {
   try { return JSON.parse(localStorage.getItem('wishlist') || '[]'); } catch { return []; }
 }
@@ -52,8 +51,8 @@ function toggleWishlist(id) {
   return wishlist.includes(id);
 }
 
-// ─── Render carousel ──────────────────────────────────────────────────────────
 
+// ─── Render carousel ───
 function renderCarousel(product) {
   const imagesEl = document.getElementById('carousel-images');
   const dotsEl = document.getElementById('carousel-dots');
@@ -79,8 +78,8 @@ function renderCarousel(product) {
   `).join('');
 }
 
-// ─── Render product info ───────────────────────────────────────────────────────
 
+// ─── Render product info ──
 function renderInfo(product) {
   document.title = product.name + ' — Gamkharu';
   document.getElementById('product-name').textContent = product.name;
@@ -96,8 +95,8 @@ function renderInfo(product) {
   }
 }
 
-// ─── Render wishlist button ───────────────────────────────────────────────────
 
+// ─── Render wishlist button ────
 function renderWishlist(product) {
   const btn = document.getElementById('wishlist-btn');
   if (isWishlisted(product.id)) btn.classList.add('wishlisted');
@@ -108,29 +107,29 @@ function renderWishlist(product) {
   });
 }
 
-// ─── Render cart button ───────────────────────────────────────────────────────
 
+// ─── Render cart button ────
 function renderCartButton(product) {
   const addBtn = document.getElementById('add-to-cart-btn');
   const goBtn = document.getElementById('go-to-cart-btn');
   
   function updateState() {
-  if (isInCart(product.id)) {
-    addBtn.style.opacity = '0';
-    addBtn.style.transform = 'scale(0.9)';
-    addBtn.style.pointerEvents = 'none';
-    goBtn.style.opacity = '1';
-    goBtn.style.transform = 'scale(1)';
-    goBtn.style.pointerEvents = '';
-  } else {
-    addBtn.style.opacity = '1';
-    addBtn.style.transform = 'scale(1)';
-    addBtn.style.pointerEvents = '';
-    goBtn.style.opacity = '0';
-    goBtn.style.transform = 'scale(0.9)';
-    goBtn.style.pointerEvents = 'none';
+    if (isInCart(product.id)) {
+      addBtn.style.opacity = '0';
+      addBtn.style.transform = 'scale(0.9)';
+      addBtn.style.pointerEvents = 'none';
+      goBtn.style.opacity = '1';
+      goBtn.style.transform = 'scale(1)';
+      goBtn.style.pointerEvents = '';
+    } else {
+      addBtn.style.opacity = '1';
+      addBtn.style.transform = 'scale(1)';
+      addBtn.style.pointerEvents = '';
+      goBtn.style.opacity = '0';
+      goBtn.style.transform = 'scale(0.9)';
+      goBtn.style.pointerEvents = 'none';
+    }
   }
-}
   
   updateState();
   
@@ -140,8 +139,8 @@ function renderCartButton(product) {
   });
 }
 
-// ─── Render suggestions ───────────────────────────────────────────────────────
 
+// ─── Render suggestions ───
 function renderSuggestions(product, allProducts) {
   const container = document.getElementById('suggestions-container');
   
@@ -178,8 +177,8 @@ function renderSuggestions(product, allProducts) {
   `).join('');
 }
 
-// ─── Main ─────────────────────────────────────────────────────────────────────
 
+// ─── Main ───
 async function init() {
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get('id'));
@@ -199,5 +198,6 @@ async function init() {
   renderCartButton(product);
   renderSuggestions(product, allProducts);
 }
+
 
 document.addEventListener('DOMContentLoaded', init);

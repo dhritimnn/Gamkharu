@@ -9,13 +9,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:ital,wght@0,400..900;1,400..900&display=swap');
-
+    
     * {
       margin: 0;
       padding: 0;
       font-family: "Lexend Deca", sans-serif;
     }
-
+    
     body {
       min-height: 100dvh;
       display: flex;
@@ -25,7 +25,7 @@
       text-align: center;
       padding: 2rem;
     }
-
+    
     .tick-circle {
       width: 80px;
       height: 80px;
@@ -38,30 +38,40 @@
       margin: 0 auto 1.5rem;
       animation: pop 0.4s ease;
     }
-
+    
     @keyframes pop {
-      0%   { transform: scale(0.5); opacity: 0; }
-      80%  { transform: scale(1.1); }
-      100% { transform: scale(1);   opacity: 1; }
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      
+      80% {
+        transform: scale(1.1);
+      }
+      
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
   </style>
   <title>Order Placed — Gamkharu</title>
 </head>
 
 <body>
-
+  
   <div class="tick-circle">
     <i class="bi bi-check-lg" style="font-size: 2.2rem; color: #FF6435;"></i>
   </div>
-
+  
   <h3 class="fw-bold mb-2">Order Placed!</h3>
   <p class="text-muted mb-1">Thank you for shopping with <span style="color:#FF6435;">Gamkharu</span>.</p>
   <p class="text-muted mb-4" style="font-size:0.9rem;">We'll get in touch with you shortly.</p>
-
+  
   <a href="/" class="btn btn-danger px-4" style="border-radius:12px;">
     Back to Home
   </a>
-
+  
 </body>
 
 </html>

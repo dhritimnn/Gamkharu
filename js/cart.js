@@ -1,5 +1,4 @@
-// ─── Cart helpers ─────────────────────────────────────────────────────────────
-
+// ─── Cart helpers ─────
 function getCart() {
   try { return JSON.parse(localStorage.getItem('cart') || '[]'); } catch { return []; }
 }
@@ -21,14 +20,14 @@ function updateQuantity(id, delta) {
   renderCart();
 }
 
-// ─── Parse price ──────────────────────────────────────────────────────────────
 
+// ─── Parse price ────
 function parsePrice(priceStr) {
   return parseFloat(String(priceStr).replace(/[^0-9.]/g, '')) || 0;
 }
 
-// ─── Render cart ──────────────────────────────────────────────────────────────
 
+// ─── Render cart ─────
 function renderCart() {
   const cart = getCart();
   const listEl = document.getElementById('cart-list');
@@ -85,8 +84,8 @@ function renderCart() {
   totalEl.textContent = '₹' + total.toLocaleString('en-IN');
 }
 
-// ─── Remove with animation ────────────────────────────────────────────────────
 
+// ─── Remove with animation ────
 function handleRemove(id, btn) {
   const itemEl = btn.closest('.cart-item');
   itemEl.classList.add('removing');
@@ -96,6 +95,6 @@ function handleRemove(id, btn) {
   }, 300);
 }
 
-// ─── Init ─────────────────────────────────────────────────────────────────────
 
+// ─── Init ───
 document.addEventListener('DOMContentLoaded', renderCart);

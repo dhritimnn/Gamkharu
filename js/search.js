@@ -1,12 +1,11 @@
-// ─── Load products from database.json ───────────────────────────────────────
-
+// ─── Load products from database.json ───
 async function loadProducts() {
   const response = await fetch('database.json');
   return await response.json();
 }
 
-// ─── Build a product card HTML string ────────────────────────────────────────
 
+// ─── Build a product card HTML string ────
 function buildCard(product) {
   return `
     <div class="col" onclick="window.location.href='product.html?id=${product.id}'" style="cursor:pointer;">
@@ -21,8 +20,9 @@ function buildCard(product) {
     </div>
   `;
 }
-// ─── Render products into #container ─────────────────────────────────────────
 
+
+// ─── Render products into #container ────
 function renderProducts(products) {
   const container = document.getElementById('container');
   if (products.length === 0) {
@@ -36,8 +36,8 @@ function renderProducts(products) {
   container.innerHTML = products.map(buildCard).join('');
 }
 
-// ─── Fuzzy / approximate search ──────────────────────────────────────────────
 
+// ─── Fuzzy / approximate search ───
 function normalize(str) {
   return str.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
@@ -52,15 +52,16 @@ function phonetic(str) {
 }
 
 function levenshtein(a, b) {
-  const m = a.length, n = b.length;
+  const m = a.length,
+    n = b.length;
   const dp = Array.from({ length: m + 1 }, (_, i) =>
     Array.from({ length: n + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0))
   );
   for (let i = 1; i <= m; i++)
     for (let j = 1; j <= n; j++)
-      dp[i][j] = a[i-1] === b[j-1]
-        ? dp[i-1][j-1]
-        : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+      dp[i][j] = a[i - 1] === b[j - 1] ?
+      dp[i - 1][j - 1] :
+      1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
   return dp[m][n];
 }
 
@@ -99,8 +100,8 @@ function approximateMatch(productName, query) {
   );
 }
 
-// ─── Tag match — exact match against space-separated cat tags ─────────────────
 
+// ─── Tag match — exact match against space-separated cat tags ────
 function tagMatch(product, query) {
   if (!product.cat) return false;
   const tags = product.cat.toLowerCase().split(/\s+/).filter(Boolean);
@@ -108,18 +109,18 @@ function tagMatch(product, query) {
   return tags.includes(q);
 }
 
-// ─── Filter — checks tags first, then falls back to name fuzzy search ─────────
 
+// ─── Filter — checks tags first, then falls back to name fuzzy search ────
 function filterProducts(products, query) {
   if (!query || query.trim() === '') return products;
-
+  
   return products.filter(p =>
     tagMatch(p, query) || approximateMatch(p.name, query)
   );
 }
 
-// ─── Sort logic ───────────────────────────────────────────────────────────────
 
+// ─── Sort logic ────
 function parsePrice(priceStr) {
   return parseFloat(priceStr.replace(/[^0-9.]/g, '')) || 0;
 }
@@ -140,39 +141,39 @@ function sortProducts(products, method) {
   }
 }
 
-// ─── Sort panel toggle ────────────────────────────────────────────────────────
 
+// ─── Sort panel toggle ─────
 function initSortToggle() {
   const sortPanel = document.getElementById('sortlist');
   const sortBtn = document.getElementById('sortbtn');
   const closeBtn = sortPanel.querySelector('.btn-outline-danger');
-
+  
   sortPanel.style.transform = 'translateY(100%)';
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       sortPanel.style.transition = 'transform 0.3s ease';
     });
   });
-
+  
   sortBtn.addEventListener('click', () => {
     sortPanel.style.transform = 'translateY(0)';
   });
-
+  
   closeBtn.addEventListener('click', () => {
     sortPanel.style.transform = 'translateY(100%)';
   });
 }
 
-// ─── Search bar ───────────────────────────────────────────────────────────────
 
+// ─── Search bar ────
 function initSearchBar() {
   const searchInput = document.querySelector('input[type="text"]');
   const searchButton = document.getElementById('button-addon2');
-
+  
   const params = new URLSearchParams(window.location.search);
   const query = params.get('q') || '';
   if (query) searchInput.value = query;
-
+  
   function doSearch() {
     const val = searchInput.value.trim();
     if (val) {
@@ -181,36 +182,36 @@ function initSearchBar() {
       window.location.href = window.location.pathname;
     }
   }
-
+  
   searchButton.addEventListener('click', doSearch);
   searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') doSearch();
   });
 }
 
-// ─── Suggestions ─────────────────────────────────────────────────────────────
 
+// ─── Suggestions ────
 function initSuggestions(products) {
   const input = document.querySelector('input[type="text"]');
   const box = document.getElementById('suggestions');
-
+  
   input.addEventListener('input', () => {
     const query = input.value.trim();
-
+    
     if (!query) {
       box.style.display = 'none';
       return;
     }
-
+    
     const matches = products
       .filter(p => tagMatch(p, query) || approximateMatch(p.name, query))
       .slice(0, 6);
-
+    
     if (matches.length === 0) {
       box.style.display = 'none';
       return;
     }
-
+    
     box.innerHTML = matches.map(p => `
       <div onclick="window.location.href='search?q=${encodeURIComponent(p.name)}'"
         class="d-flex align-items-center gap-3 px-3 py-2 border-bottom"
@@ -225,10 +226,10 @@ function initSuggestions(products) {
         </div>
       </div>
     `).join('');
-
+    
     box.style.display = 'block';
   });
-
+  
   document.addEventListener('click', (e) => {
     if (!input.contains(e.target) && !box.contains(e.target)) {
       box.style.display = 'none';
@@ -236,8 +237,8 @@ function initSuggestions(products) {
   });
 }
 
-// ─── Main ─────────────────────────────────────────────────────────────────────
 
+// ─── Main ────
 let allProducts = [];
 let currentQuery = '';
 let currentSort = '';
@@ -245,39 +246,41 @@ let currentSort = '';
 async function init() {
   initSortToggle();
   initSearchBar();
-
+  
   allProducts = await loadProducts();
   initSuggestions(allProducts);
-
+  
   const params = new URLSearchParams(window.location.search);
   currentQuery = params.get('q') || '';
-
+  
   const heading = document.querySelector('.border-bottom');
   if (heading) {
-    heading.textContent = currentQuery
-      ? 'Results for "' + currentQuery + '"'
-      : 'All Items';
+    heading.textContent = currentQuery ?
+      'Results for "' + currentQuery + '"' :
+      'All Items';
   }
-
+  
   let displayed = filterProducts(allProducts, currentQuery);
   renderProducts(displayed);
-
+  
   const sortButtons = document.querySelectorAll('#sortlist .btn:not(.btn-outline-danger)');
   const sortMap = ['price-high', 'price-low', 'az', 'za'];
-
+  
   sortButtons.forEach((btn, i) => {
     btn.addEventListener('click', () => {
       currentSort = sortMap[i];
       sortButtons.forEach(b => b.classList.remove('fw-bold', 'text-danger'));
       btn.classList.add('fw-bold', 'text-danger');
-
+      
       let result = filterProducts(allProducts, currentQuery);
       result = sortProducts(result, currentSort);
       renderProducts(result);
-
+      
       document.getElementById('sortlist').style.transform = 'translateY(100%)';
     });
   });
 }
+
+
 
 document.addEventListener('DOMContentLoaded', init);

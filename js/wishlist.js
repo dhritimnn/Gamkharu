@@ -1,5 +1,4 @@
-// ─── Wishlist helpers ─────────────────────────────────────────────────────────
-
+// ─── Wishlist helpers ───
 function getWishlist() {
   try { return JSON.parse(localStorage.getItem('wishlist') || '[]'); } catch { return []; }
 }
@@ -12,8 +11,8 @@ function removeFromWishlist(id) {
   saveWishlist(getWishlist().filter(i => i !== id));
 }
 
-// ─── Render ───────────────────────────────────────────────────────────────────
 
+// ─── Render ────
 async function renderWishlist() {
   const wishlistIds = getWishlist();
   const gridEl = document.getElementById('wishlist-grid');
@@ -70,8 +69,8 @@ async function renderWishlist() {
   `).join('');
 }
 
-// ─── Remove with animation ────────────────────────────────────────────────────
 
+// ─── Remove with animation ───
 function handleRemove(id, btn) {
   const cardEl = btn.closest('.wish-card');
   cardEl.classList.add('removing');
@@ -81,6 +80,6 @@ function handleRemove(id, btn) {
   }, 300);
 }
 
-// ─── Init ─────────────────────────────────────────────────────────────────────
 
+// ─── Init ────
 document.addEventListener('DOMContentLoaded', renderWishlist);
