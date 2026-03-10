@@ -5,13 +5,20 @@ async function loadDatabase() {
   return await response.json();
 }
 
+// ─── Tag match ────────────────────────────────────────────────────────────────
+
+function tagMatch(product, tag) {
+  if (!product.cat) return false;
+  return product.cat.toLowerCase().split(/\s+/).includes(tag.toLowerCase());
+}
+
 // ─── Build a featured card ────────────────────────────────────────────────────
 
 function buildFeaturedCard(product) {
   return `
-    <div class="card rounded-4 flex-shrink-0" style="width: 12rem; cursor: pointer;"
+    <div class="card rounded-4 flex-shrink-0" style="width: 11.5rem; cursor: pointer; height: 18rem;"
       onclick="window.location.href='product.html?id=${product.id}'">
-      <img src="${product.url}" class="card-img-top rounded-4" alt="${product.name}"
+      <img src="${product.url}" class="card-img-top rounded-4 imgp" alt="${product.name}"
         onerror="this.src='https://picsum.photos/300/351'">
       <div class="card-body">
         <p class="card-text mb-0">${product.name}</p>
@@ -36,6 +43,23 @@ function buildExploreCard() {
   `;
 }
 
+
+// ─── Build the "Explore More of Catagory" card ───────────────────────────────────────────
+
+function buildCatExploreCard(tag) {
+  return `
+    <div class="col">
+      <div class="cat-card d-flex align-items-center justify-content-center"
+        style="background:#fff3f0; border: 2px dashed #FF6435; min-height:100%;"
+        onclick="window.location.href='search?q=${encodeURIComponent(tag)}'">
+        <div class="text-center p-2">
+          <div style="font-size:1.5rem; color:#FF6435;">→</div>
+          <p style="font-size:0.8rem; color:#FF6435; margin:0; font-weight:600;">View All</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
 // ─── Render featured items ────────────────────────────────────────────────────
 
 function renderFeatured(products) {
@@ -50,6 +74,46 @@ function renderFeatured(products) {
   }
 
   container.innerHTML = featuredItems.map(buildFeaturedCard).join('') + buildExploreCard();
+}
+
+// ─── Build a category section card (2-col grid) ───────────────────────────────
+
+function buildCatCard(product) {
+  return `
+    <div class="col">
+      <div class="cat-card" onclick="window.location.href='product.html?id=${product.id}'">
+        <img src="${product.url}" alt="${product.name}"
+          onerror="this.src='https://picsum.photos/300/351'">
+        <div class="cat-card-body">
+          <p class="cat-card-name">${product.name}</p>
+          <p class="cat-card-price">${product.price}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ─── Render all category product sections ────────────────────────────────────
+
+function renderCatSections(products) {
+  const sections = document.querySelectorAll('[data-tag]');
+  
+  sections.forEach(container => {
+    const tag = container.getAttribute('data-tag');
+    const max = parseInt(container.getAttribute('data-max')) || 6;
+    
+    const items = products
+      .filter(p => tagMatch(p, tag))
+      .slice(0, max - 1); // only 5 real items
+    
+    if (items.length === 0) {
+      const section = container.closest('.cat-section');
+      if (section) section.style.display = 'none';
+      return;
+    }
+    
+    container.innerHTML = items.map(buildCatCard).join('') + buildCatExploreCard(tag);
+  });
 }
 
 // ─── Fuzzy search ────────────────────────────────────────────────────────────
@@ -124,22 +188,16 @@ function initSuggestions(products) {
   input.addEventListener('input', () => {
     const query = input.value.trim();
 
-    if (!query) {
-      box.style.display = 'none';
-      return;
-    }
+    if (!query) { box.style.display = 'none'; return; }
 
     const matches = products
       .filter(p => approximateMatch(p.name, query))
       .slice(0, 6);
 
-    if (matches.length === 0) {
-      box.style.display = 'none';
-      return;
-    }
+    if (matches.length === 0) { box.style.display = 'none'; return; }
 
     box.innerHTML = matches.map(p => `
-      <div onclick="window.location.href='search?q=${encodeURIComponent(p.name)}'"
+      <div onclick="window.location.href='product.html?id=${p.id}'"
         class="d-flex align-items-center gap-3 px-3 py-2 border-bottom"
         style="cursor:pointer;"
         onmouseover="this.style.background='#fff3f0'"
@@ -166,9 +224,7 @@ function initSuggestions(products) {
 
   function doSearch() {
     const val = input.value.trim();
-    if (val) {
-      window.location.href = 'search?q=' + encodeURIComponent(val);
-    }
+    if (val) window.location.href = 'search?q=' + encodeURIComponent(val);
   }
 
   searchButton.addEventListener('click', doSearch);
@@ -182,6 +238,7 @@ function initSuggestions(products) {
 async function init() {
   const products = await loadDatabase();
   renderFeatured(products);
+  renderCatSections(products);
   initSuggestions(products);
 }
 
