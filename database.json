@@ -1,55 +1,7 @@
 [
-  {
-    "name": "Kapur #1",
-    "id": 2,
-    "url": "img/mass/01.png",
-    "url2": "img/mass/01.png",
-    "price": "299₹",
-    "cat": "ri featured"
-  },
   
+
   {
-    "name": "Gohona #1",
-    "id": 1,
-    "url": "img/mass/01.png",
-    "url2": "img/mass/01b.png",
-    "price": "399₹",
-    "cat": "ri"
-  },
-  {
-    "name": "Boutique #1",
-    "id": 3,
-    "url": "img/mass/02.png",
-    "url2": "img/mass/02.png",
-    "price": "399₹",
-    "cat": "ri he"
-  },
-{
-    "name": "Kapur #1",
-    "id": 2,
-    "url": "img/mass/01.png",
-    "url2": "img/mass/01.png",
-    "price": "299₹",
-    "cat": "ri featured"
-  },
-  
-  {
-    "name": "Gohona #1",
-    "id": 1,
-    "url": "img/mass/01.png",
-    "url2": "img/mass/01b.png",
-    "price": "399₹",
-    "cat": "ri"
-  },
-  {
-    "name": "Boutique #1",
-    "id": 3,
-    "url": "img/mass/02.png",
-    "url2": "img/mass/02.png",
-    "price": "399₹",
-    "cat": "ri he"
-  },
-{
     "name": "Kapur #1",
     "id": 2,
     "url": "img/mass/01.png",
