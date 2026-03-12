@@ -9,7 +9,7 @@
     { "source": "/order", "destination": "order.html" },
     { "source": "/admin", "destination": "admin.html" },
     { "source": "/thankyou", "destination": "thankyou.html" },
-    { "source": "/catagory", "destination": "catagory.html" },
+    { "source": "/category", "destination": "category.html" },
     { "source": "/wishlist", "destination": "wishlist.html" }
   ]
 }
