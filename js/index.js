@@ -33,7 +33,7 @@ function buildExploreCard() {
   return `
     <div class="card rounded-4 flex-shrink-0 d-flex align-items-center justify-content-center"
       style="width: 12rem; min-height: 16rem; cursor: pointer; background: rgba(255,255,255,0.15); border: 2px dashed white;"
-      onclick="window.location.href='search?=featured'">
+      onclick="window.location.href='search?q=featured'">
       <div class="text-center text-white p-3">
         <div style="font-size: 2rem;">→</div>
         <p class="mt-2 fw-bold">Explore More</p>
