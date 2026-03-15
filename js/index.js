@@ -16,7 +16,7 @@ function tagMatch(product, tag) {
 function buildFeaturedCard(product) {
   return `
     <div class="card rounded-4 flex-shrink-0" style="width: 11.5rem; cursor: pointer; height: 18rem;"
-      onclick="window.location.href='product.html?id=${product.id}'">
+      onclick="window.location.href='product?id=${product.id}'">
       <img src="${product.url}" class="card-img-top rounded-4 imgp" alt="${product.name}"
         onerror="this.src='https://picsum.photos/300/351'">
       <div class="card-body">
@@ -33,7 +33,7 @@ function buildExploreCard() {
   return `
     <div class="card rounded-4 flex-shrink-0 d-flex align-items-center justify-content-center"
       style="width: 12rem; min-height: 16rem; cursor: pointer; background: rgba(255,255,255,0.15); border: 2px dashed white;"
-      onclick="window.location.href='search.html'">
+      onclick="window.location.href='search?=featured'">
       <div class="text-center text-white p-3">
         <div style="font-size: 2rem;">→</div>
         <p class="mt-2 fw-bold">Explore More</p>
@@ -80,7 +80,7 @@ function renderFeatured(products) {
 function buildCatCard(product) {
   return `
     <div class="col">
-      <div class="cat-card" onclick="window.location.href='product.html?id=${product.id}'">
+      <div class="cat-card" onclick="window.location.href='product?id=${product.id}'">
         <img src="${product.url}" alt="${product.name}"
           onerror="this.src='https://picsum.photos/300/351'">
         <div class="cat-card-body">
@@ -197,7 +197,7 @@ function initSuggestions(products) {
     if (matches.length === 0) { box.style.display = 'none'; return; }
     
     box.innerHTML = matches.map(p => `
-      <div onclick="window.location.href='product.html?id=${p.id}'"
+      <div onclick="window.location.href='product?id=${p.id}'"
         class="d-flex align-items-center gap-3 px-3 py-2 border-bottom"
         style="cursor:pointer;"
         onmouseover="this.style.background='#fff3f0'"
