@@ -1,9 +1,9 @@
 // ── Load data ──
-async function loadDatabase() {
+/*async function loadDatabase() {
   const response = await fetch('database.json');
   return await response.json();
 }
-
+*/
 
 // ─── Tag match ───
 function tagMatch(product, tag) {
