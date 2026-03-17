@@ -26,7 +26,7 @@ function buildFeaturedCard(product) {
           <i class="bi ${isWishlisted ? 'bi-heart-fill' : 'bi-heart'}"></i>
         </button>
 
-      <img src="${product.url}" class="card-img-top rounded-4 imgp" alt="${product.name}"
+      <img src="${product.url}" class="card-img-top rounded-4 imgq" alt="${product.name}"
         onerror="this.src='https://picsum.photos/300/351'">
       <div class="card-body">
         <p class="card-text mb-0">${product.name}</p>
