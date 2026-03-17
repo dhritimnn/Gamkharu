@@ -183,7 +183,7 @@ async function init() {
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get('id'));
   
-  const allProducts = await loadDatabase();
+  const allProducts = await loadProducts();
   const product = allProducts.find(p => p.id === id);
   
   if (!product) {

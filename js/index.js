@@ -275,7 +275,7 @@ function initSuggestions(products) {
 // ─── Main ───
 
 async function init() {
-  const products = await loadDatabase();
+  const products = await loadProducts();
   renderFeatured(products);
   renderCatSections(products);
   initSuggestions(products);
