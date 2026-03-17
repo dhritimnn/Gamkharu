@@ -5,7 +5,7 @@ function checkPin() {
   const entered = document.getElementById('pinInput').value;
   if (entered === ADMIN_PIN) {
     document.getElementById('pinScreen').classList.remove('d-flex');
-document.getElementById('pinScreen').classList.add('d-none');
+    document.getElementById('pinScreen').classList.add('d-none');
     document.getElementById('adminPanel').style.display = 'block';
     loadAdmin();
   } else {
@@ -32,6 +32,10 @@ function updateAutoId() {
 }
 
 // ─── Render product table ─────────────────────────────────────────────────────
+function isFeatured(p) {
+  return p.cat && p.cat.toLowerCase().split(/\s+/).includes('featured');
+}
+
 function renderTable() {
   const tbody = document.getElementById('productTable');
   if (products.length === 0) {
@@ -45,8 +49,8 @@ function renderTable() {
       <td>${p.name}</td>
       <td>${p.price}</td>
       <td>
-        <span class="badge ${p.featured ? 'bg-warning text-dark' : 'bg-secondary'}">
-          ${p.featured ? 'Featured' : 'Normal'}
+        <span class="badge ${isFeatured(p) ? 'bg-warning text-dark' : 'bg-secondary'}">
+          ${isFeatured(p) ? 'Featured' : 'Normal'}
         </span>
       </td>
       <td>
@@ -79,8 +83,16 @@ function submitProduct() {
   const price = document.getElementById('fieldPrice').value.trim();
   const url = document.getElementById('fieldUrl').value.trim();
   const url2 = document.getElementById('fieldUrl2').value.trim();
-  const cat = document.getElementById('fieldCat').value.trim();
   const featured = document.getElementById('fieldFeatured').checked;
+
+  // Merge featured into cat tags
+  let cat = document.getElementById('fieldCat').value.trim();
+  let tags = cat.toLowerCase().split(/\s+/).filter(Boolean);
+  if (featured && !tags.includes('featured')) {
+    cat = (cat + ' featured').trim();
+  } else if (!featured) {
+    cat = tags.filter(t => t !== 'featured').join(' ');
+  }
 
   if (!name || !price || !url) {
     showStatus('Name, price and image URL are required.', 'danger');
@@ -90,7 +102,6 @@ function submitProduct() {
   const product = { id, name, url, price };
   if (url2) product.url2 = url2;
   if (cat) product.cat = cat;
-  if (featured) product.featured = true;
 
   if (editingIndex !== null) {
     products[editingIndex] = product;
@@ -114,8 +125,12 @@ function editProduct(i) {
   document.getElementById('fieldPrice').value = p.price;
   document.getElementById('fieldUrl').value = p.url;
   document.getElementById('fieldUrl2').value = p.url2 || '';
-  document.getElementById('fieldCat').value = p.cat || '';
-  document.getElementById('fieldFeatured').checked = p.featured || false;
+
+  // Fill cat without the featured tag (checkbox handles it separately)
+  const tags = p.cat ? p.cat.toLowerCase().split(/\s+/).filter(Boolean) : [];
+  document.getElementById('fieldCat').value = tags.filter(t => t !== 'featured').join(' ');
+  document.getElementById('fieldFeatured').checked = tags.includes('featured');
+
   editingIndex = i;
   document.getElementById('submitBtn').textContent = 'Update Product';
   document.getElementById('cancelBtn').style.display = 'inline-block';
@@ -153,9 +168,9 @@ async function saveToDatabase() {
   showStatus('Saving to database...', 'info');
   const ok = await dbWrite(products);
   if (ok) {
-    showStatus('✓ Saved successfully to JSONBin! ' + products.length + ' products live.', 'success');
+    showStatus('Saved successfully! ' + products.length + ' products live.', 'success');
   } else {
-    showStatus('✗ Save failed. Check your API key or internet connection.', 'danger');
+    showStatus('Save failed. Check your API key or internet connection.', 'danger');
   }
 }
 
