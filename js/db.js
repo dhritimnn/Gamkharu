@@ -1,6 +1,6 @@
 // ─── JSONBin config ───────────────────────────────────────────────────────────
-const JSONBIN_BIN_ID = '69b81d69aa77b81da9ed0990';
-const JSONBIN_API_KEY = '$2a$10$qhehl1VRgwk3H3w5Kw7EAO6siI2FVcD0WsLqyS5oGy/CO6ZrnhXqa';
+const JSONBIN_BIN_ID = '69b8f36eb7ec241ddc764dd6';
+const JSONBIN_API_KEY = '$2a$10$UDaTvuxqdJMn4L2ppP3LP.WYrjXacmcQVpyjJikn2s0ZbC7cbB8FC';
 const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
 
 // ─── Read database ────────────────────────────────────────────────────────────
