@@ -7,12 +7,22 @@ async function loadProducts() {
 
 // ─── Build a product card HTML string ────
 function buildCard(product) {
+  const isWishlisted = JSON.parse(localStorage.getItem('wishlist') || '[]').includes(product.id);
   return `
-    <div class="col" onclick="window.location.href='product.html?id=${product.id}'" style="cursor:pointer;">
-      <div class="card rounded-4 w-100 flex-shrink-0">
-        <img src="${product.url}" class="card-img-top rounded-4" alt="${product.name}"
-          onerror="this.src='https://picsum.photos/300/351'">
-        <div class="card-body">
+    <div class="col" style="cursor:pointer;">
+      <div class="card w-100 flex-shrink-0 position-relative" style="border: none">
+        <button
+          onclick="toggleWishlist(event, ${product.id}, this)"
+          class="position-absolute top-2 end-2 m- btn border-0 bg-white"
+          style="z-index:1; font-size:1.3rem; color:${isWishlisted ? '#FF6435' : '#aaa'}; border-radius: 100%; height:25px; width: 25px; display: flex; justify-content: center; align-items: center;">
+          <i class="bi ${isWishlisted ? 'bi-heart-fill' : 'bi-heart'}"></i>
+        </button>
+        <img src="${product.url}" class="card-img-top p-3 pb-2" alt="${product.name}"
+          onerror="this.src='https://picsum.photos/300/351'"
+          style="border-radius:30px;"
+          onclick="window.location.href='product?id=${product.id}'">
+        <div class="card-body pt-0 px-4"
+          onclick="window.location.href='product?id=${product.id}'">
           <p class="card-text mb-0">${product.name}</p>
           <h4 class="card-text ml-2">${product.price}</h4>
         </div>
@@ -21,6 +31,23 @@ function buildCard(product) {
   `;
 }
 
+
+function toggleWishlist(event, id, btn) {
+  event.stopPropagation(); // prevents navigating to product page
+  let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  
+  if (wishlist.includes(id)) {
+    wishlist = wishlist.filter(i => i !== id);
+    btn.innerHTML = '<i class="bi bi-heart"></i>';
+    btn.style.color = '#aaa';
+  } else {
+    wishlist.push(id);
+    btn.innerHTML = '<i class="bi bi-heart-fill"></i>';
+    btn.style.color = '#FF6435';
+  }
+  
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
 
 // ─── Render products into #container ────
 function renderProducts(products) {
