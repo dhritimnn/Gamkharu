@@ -14,9 +14,18 @@ function tagMatch(product, tag) {
 
 // ─── Build a featured card ───
 function buildFeaturedCard(product) {
+  const isWishlisted = JSON.parse(localStorage.getItem('wishlist') || '[]').includes(product.id);
+  
   return `
     <div class="card rounded-4 flex-shrink-0" style="width: 11.5rem; cursor: pointer; height: 18rem;"
       onclick="window.location.href='product?id=${product.id}'">
+        <button
+          onclick="toggleWishlist(event, ${product.id}, this)"
+          class="position-absolute top-0 end-0 btn border-0 bg-white m-0"
+          style="z-index:1; font-size:1.3rem; color:${isWishlisted ? '#FF6435' : '#aaa'}; border-radius: 0 10px 0 10px; height:27px; width: 35px; display: flex; justify-content: center; align-items: center;">
+          <i class="bi ${isWishlisted ? 'bi-heart-fill' : 'bi-heart'}"></i>
+        </button>
+
       <img src="${product.url}" class="card-img-top rounded-4 imgp" alt="${product.name}"
         onerror="this.src='https://picsum.photos/300/351'">
       <div class="card-body">
@@ -26,6 +35,24 @@ function buildFeaturedCard(product) {
     </div>
   `;
 }
+
+function toggleWishlist(event, id, btn) {
+  event.stopPropagation(); // prevents navigating to product page
+  let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  
+  if (wishlist.includes(id)) {
+    wishlist = wishlist.filter(i => i !== id);
+    btn.innerHTML = '<i class="bi bi-heart"></i>';
+    btn.style.color = '#aaa';
+  } else {
+    wishlist.push(id);
+    btn.innerHTML = '<i class="bi bi-heart-fill"></i>';
+    btn.style.color = '#FF6435';
+  }
+  
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
+
 
 
 // ─── Build the "Explore More" card ────
@@ -78,9 +105,17 @@ function renderFeatured(products) {
 
 // ─── Build a category section card (2-col grid) ───
 function buildCatCard(product) {
+  const isWishlisted = JSON.parse(localStorage.getItem('wishlist') || '[]').includes(product.id);
+  
   return `
     <div class="col">
       <div class="cat-card" onclick="window.location.href='product?id=${product.id}'">
+        <button
+          onclick="toggleWishlist(event, ${product.id}, this)"
+          class="btn border-0 bg-white m-0"
+          style="z-index:1; font-size:1.3rem; color:${isWishlisted ? '#FF6435' : '#aaa'}; border-radius: 0 10px 0 10px; height:27px; width: 35px; display: flex; justify-content: center; align-items: center;">
+          <i class="bi ${isWishlisted ? 'bi-heart-fill' : 'bi-heart'}"></i>
+        </button>
         <img src="${product.url}" alt="${product.name}"
           onerror="this.src='https://picsum.photos/300/351'">
         <div class="cat-card-body">

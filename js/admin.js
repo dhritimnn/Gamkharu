@@ -4,7 +4,8 @@ const ADMIN_PIN = '6765';
 function checkPin() {
   const entered = document.getElementById('pinInput').value;
   if (entered === ADMIN_PIN) {
-    document.getElementById('pinScreen').style.display = 'none';
+    document.getElementById('pinScreen').classList.remove('d-flex');
+document.getElementById('pinScreen').classList.add('d-none');
     document.getElementById('adminPanel').style.display = 'block';
     loadAdmin();
   } else {
