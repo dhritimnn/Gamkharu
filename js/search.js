@@ -13,8 +13,8 @@ function buildCard(product) {
       <div class="card w-100 flex-shrink-0 position-relative" style="border: none">
         <button
           onclick="toggleWishlist(event, ${product.id}, this)"
-          class="position-absolute top-2 end-2 m- btn border-0 bg-white"
-          style="z-index:1; font-size:1.3rem; color:${isWishlisted ? '#FF6435' : '#aaa'}; border-radius: 100%; height:25px; width: 25px; display: flex; justify-content: center; align-items: center;">
+          class="position-absolute top-0 end-0 btn border-0 bg-white mt-3 me-3"
+          style="z-index:1; font-size:1.3rem; color:${isWishlisted ? '#FF6435' : '#aaa'}; border-radius: 0 0 0 10px; height:27px; width: 35px; display: flex; justify-content: center; align-items: center;">
           <i class="bi ${isWishlisted ? 'bi-heart-fill' : 'bi-heart'}"></i>
         </button>
         <img src="${product.url}" class="card-img-top p-3 pb-2" alt="${product.name}"
