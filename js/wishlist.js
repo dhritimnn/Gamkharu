@@ -27,8 +27,7 @@ async function renderWishlist() {
   }
   
   // Load database to get product details
-  const response = await fetch('database.json');
-  const allProducts = await response.json();
+  const allProducts = await loadProducts();
   
   const items = wishlistIds
     .map(id => allProducts.find(p => p.id === id))
