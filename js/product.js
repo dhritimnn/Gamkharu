@@ -1,8 +1,8 @@
 // ─── Load database ────
-async function loadDatabase() {
+/* async function loadDatabase() {
   const response = await fetch('database.json');
   return await response.json();
-}
+} */
 
 
 // ─── Cart helpers (localStorage) ────
