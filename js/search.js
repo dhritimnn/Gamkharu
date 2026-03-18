@@ -61,6 +61,7 @@ function renderProducts(products) {
     return;
   }
   container.innerHTML = products.map(buildCard).join('');
+  window.gkRevealNew && window.gkRevealNew();
 }
 
 
