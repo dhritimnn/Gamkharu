@@ -23,7 +23,9 @@ function buildCard(product) {
           onclick="window.location.href='product?id=${product.id}'">
         <div class="card-body pt-0 px-4"
           onclick="window.location.href='product?id=${product.id}'">
-          ${product.cat && product.cat.toLowerCase().split(/\s+/).includes('featured') ? `<span class="badge bg-warning text-dark mb-1"><i class="bi bi-star-fill me-1"></i>Featured</span>` : '' }
+          
+          ${product.cat && product.cat.toLowerCase().split(' ').includes('featured') ? `<span class="badge bg-warning text-dark mb-1"><i class="bi bi-star-fill me-1"></i>Featured</span>` : '' }
+          
           <p class="card-text mb-0">${product.name}</p>
           <h4 class="card-text ml-2">${product.price}</h4>
         </div>
@@ -61,7 +63,6 @@ function renderProducts(products) {
     return;
   }
   container.innerHTML = products.map(buildCard).join('');
-  window.gkRevealNew && window.gkRevealNew();
 }
 
 

@@ -1,7 +1,7 @@
-// ─── Gamkharu Loader + Animations ────────────────────────────────────────────
+// ─── Gamkharu Loader ───
 
 (function() {
-  // ─── Styles ────────────────────────────────────────────────────────────────
+  // Inject styles
   const style = document.createElement('style');
   style.textContent = `
     #gk-loader {
@@ -49,41 +49,11 @@
       color: #FF6435;
       letter-spacing: 2px;
     }
-
-    /* ── Entrance animation (page load) ── */
-    .gk-fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-
-    .gk-fade-up.gk-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── Scroll animation ── */
-    .gk-scroll-reveal {
-      opacity: 0;
-      transform: translateY(36px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .gk-scroll-reveal.gk-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── Stagger delays for grids/rows ── */
-    .gk-scroll-reveal:nth-child(2) { transition-delay: 0.08s; }
-    .gk-scroll-reveal:nth-child(3) { transition-delay: 0.16s; }
-    .gk-scroll-reveal:nth-child(4) { transition-delay: 0.24s; }
-    .gk-scroll-reveal:nth-child(5) { transition-delay: 0.32s; }
-    .gk-scroll-reveal:nth-child(6) { transition-delay: 0.40s; }
   `;
   document.head.appendChild(style);
-
-  // ─── Loader HTML ───────────────────────────────────────────────────────────
+  
+  
+  // Inject loader HTML
   const loader = document.createElement('div');
   loader.id = 'gk-loader';
   loader.innerHTML = `
@@ -95,75 +65,11 @@
     <div class="gk-brand">GAMKHARU</div>
   `;
   document.body.appendChild(loader);
-
-  // ─── Hide loader + trigger entrance animations ─────────────────────────────
+  
+  
+  // Hide on page load
   window.addEventListener('load', () => {
     loader.classList.add('hide');
-    setTimeout(() => {
-      loader.remove();
-      triggerEntranceAnimations();
-    }, 400);
+    setTimeout(() => loader.remove(), 400);
   });
-
-  // ─── Entrance: animate navbar, search bar, first visible sections ──────────
-  function triggerEntranceAnimations() {
-    const targets = document.querySelectorAll('nav, .sticky-top, .carousel, .gk-fade-up');
-    targets.forEach((el, i) => {
-      el.classList.add('gk-fade-up');
-      setTimeout(() => el.classList.add('gk-visible'), i * 100);
-    });
-    // Start observing scroll elements
-    initScrollReveal();
-  }
-
-  // ─── Scroll reveal via IntersectionObserver ────────────────────────────────
-  function initScrollReveal() {
-    // Auto-tag common content blocks for scroll reveal
-    const selectors = [
-      '#featured > .card',
-      '#container > .col',
-      '#catagory .col',
-      '.cat-section',
-      'footer',
-      '.p-4 > .card',
-    ];
-
-    selectors.forEach(sel => {
-      document.querySelectorAll(sel).forEach(el => {
-        if (!el.classList.contains('gk-scroll-reveal')) {
-          el.classList.add('gk-scroll-reveal');
-        }
-      });
-    });
-
-    // Also observe anything manually tagged
-    const allReveal = document.querySelectorAll('.gk-scroll-reveal');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('gk-visible');
-          observer.unobserve(entry.target); // animate once
-        }
-      });
-    }, { threshold: 0.12 });
-
-    allReveal.forEach(el => observer.observe(el));
-  }
-
-  // ─── Re-run scroll reveal after dynamic content loads ─────────────────────
-  // Call this from search.js / index.js after renderProducts / renderFeatured
-  window.gkRevealNew = function() {
-    const allReveal = document.querySelectorAll('.gk-scroll-reveal:not(.gk-visible)');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('gk-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    allReveal.forEach(el => observer.observe(el));
-  };
-
 })();
