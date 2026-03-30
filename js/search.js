@@ -1,8 +1,8 @@
 // ─── Load products from database.json ───
-/* async function loadProducts() {
+ async function loadProducts() {
   const response = await fetch('database.json');
   return await response.json();
-} */
+} 
 
 
 // ─── Build a product card HTML string ────

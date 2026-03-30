@@ -1,3 +1,10 @@
+// ── Load data ──
+async function loadProducts() {
+  const response = await fetch('database.json');
+  return await response.json();
+}
+
+
 // ─── Wishlist helpers ───
 function getWishlist() {
   try { return JSON.parse(localStorage.getItem('wishlist') || '[]'); } catch { return []; }
