@@ -21,9 +21,18 @@
   
     {
     "name": "Masrise Cotton",
-    "id": 1,
+    "id": 3,
     "url": "dataimg/03.webp",
     "url2": "dataimg/03b.webp",
+    "price": "3950₹",
+    "cat": "masrise cotton featured"
+  },
+  
+  {
+    "name": "Masrise Cotton",
+    "id": 4,
+    "url": "dataimg/04.webp",
+    "url2": "dataimg/04b.webp",
     "price": "3950₹",
     "cat": "masrise cotton featured"
   }
