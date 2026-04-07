@@ -28,7 +28,7 @@ function buildFeaturedCard(product) {
 
       <img src="${product.url}" class="card-img-top rounded-4 imgq" alt="${product.name}"
         onerror="this.src='https://picsum.photos/300/351'">
-      <div class="card-body">
+      <div class="card-body p-2">
         <p class="card-text mb-0">${product.name}</p>
         <p class="card-text" style="color:#FF6435;">${product.price}</p>
       </div>
