@@ -2,28 +2,11 @@
   
 
   {
-    "name": "Kapur #1",
-    "id": 2,
-    "url": "dataimg/01.png",
-    "url2": "dataimg/01.png",
-    "price": "299₹",
-    "cat": "ri featured"
-  },
-  
-  {
-    "name": "Gohona #1",
+    "name": "Masrise Cotton",
     "id": 1,
-    "url": "dataimg/01.png",
-    "url2": "dataimg/01b.png",
-    "price": "399₹",
-    "cat": "ri"
-  },
-  {
-    "name": "Boutique #1",
-    "id": 3,
-    "url": "dataimg/02.png",
-    "url2": "dataimg/02.png",
-    "price": "399₹",
-    "cat": "ri he"
+    "url": "dataimg/01.webp",
+    "url2": "dataimg/01b.webp",
+    "price": "3950₹",
+    "cat": "masrise cotton"
   }
 ]
