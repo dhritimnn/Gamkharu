@@ -1,0 +1,267 @@
+<div id="ordercomp-root">
+  <style>
+    #ordercomp-root {
+      padding: 1rem 1.25rem 5rem;
+      color: darkslategrey;
+    }
+
+    #order-header {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    #order-back-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #order-heading {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: darkslategrey;
+      margin: 0;
+    }
+
+    /* ── Cart Summary ── */
+    #order-summary-box {
+      background: #fff8f6;
+      border: 1px solid #ffd5c8;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .order-item-row {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .65rem 0;
+      border-bottom: 1px solid #f0e8e8;
+    }
+
+    .order-item-row:last-child {
+      border-bottom: none;
+    }
+
+    .order-item-img {
+      width: 52px;
+      height: 52px;
+      object-fit: cover;
+      border-radius: .6rem;
+      flex-shrink: 0;
+      background: #f5f0ee;
+    }
+
+    .order-item-name {
+      font-size: .88rem;
+      font-weight: 600;
+      color: darkslategrey;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .order-item-meta {
+      font-size: .75rem;
+      color: #aaa;
+      margin-top: .1rem;
+    }
+
+    .order-item-price {
+      margin-left: auto;
+      font-size: .88rem;
+      font-weight: 700;
+      color: #FF6435;
+      flex-shrink: 0;
+    }
+
+    #order-divider {
+      border: none;
+      border-top: 1px solid #ffd5c8;
+      margin: .75rem 0;
+    }
+
+    #order-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    #order-total {
+      color: #FF6435;
+    }
+
+    #order-empty {
+      text-align: center;
+      color: #aaa;
+      font-size: .9rem;
+      padding: 1.5rem 0;
+    }
+
+    /* ── Form ── */
+    #order-form-heading {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: darkslategrey;
+    }
+
+    .order-field {
+      margin-bottom: .9rem;
+    }
+
+    .order-label {
+      font-size: .8rem;
+      color: #888;
+      margin-bottom: .3rem;
+      display: block;
+    }
+
+    .order-required {
+      color: #FF6435;
+    }
+
+    .order-input {
+      width: 100%;
+      border: 1.5px solid #e8dcd5;
+      border-radius: .75rem;
+      padding: .7rem .9rem;
+      font-size: .9rem;
+      color: darkslategrey;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color .2s;
+      background: white;
+    }
+
+    .order-input:focus {
+      border-color: #FF6435;
+    }
+
+    .order-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+
+    /* ── Submit ── */
+    #place-order-btn {
+      width: 100%;
+      background: #FF6435;
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      padding: .9rem;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      transition: opacity .2s;
+    }
+
+    #place-order-btn:active {
+      opacity: .8;
+    }
+  </style>
+
+  <!-- Header -->
+  <div id="order-header">
+    <button id="order-back-btn" aria-label="Go back" onclick="history.back()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="darkslategrey" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+    </button>
+    <h4 id="order-heading">Order Summary</h4>
+  </div>
+
+  <!-- Cart Summary -->
+  <div id="order-summary-box">
+    <div id="order-items"></div>
+    <hr id="order-divider">
+    <div id="order-total-row">
+      <span>Total</span>
+      <span id="order-total">₹0</span>
+    </div>
+  </div>
+
+  <!-- Delivery Form -->
+  <p id="order-form-heading">Delivery Details</p>
+
+  <form id="zoho-form"
+    action="https://forms.zohopublic.in/myac4636gm1/form/MakeOrder/formperma/8gXguZIljhqAij-CpnNGa85zSC0q9p6j6XdeuF28NN4/htmlRecords/submit"
+    method="POST"
+    accept-charset="UTF-8"
+    enctype="multipart/form-data">
+
+    <input type="hidden" name="zf_referrer_name" value="">
+    <input type="hidden" name="zf_redirect_url" value="">
+    <input type="hidden" name="zc_gad" value="">
+
+    <div class="order-row">
+      <div class="order-field">
+        <label class="order-label">First Name <span class="order-required">*</span></label>
+        <input class="order-input" type="text" name="Name_First" maxlength="255" placeholder="First name" required>
+      </div>
+      <div class="order-field">
+        <label class="order-label">Last Name</label>
+        <input class="order-input" type="text" name="Name_Last" maxlength="255" placeholder="Last name">
+      </div>
+    </div>
+
+    <div class="order-field">
+      <label class="order-label">Phone Number <span class="order-required">*</span></label>
+      <input class="order-input" type="tel" name="PhoneNumber_countrycode" maxlength="20" placeholder="e.g. 9876543210" required>
+    </div>
+
+    <div class="order-field">
+      <label class="order-label">Street Address <span class="order-required">*</span></label>
+      <input class="order-input" type="text" name="Address_AddressLine1" maxlength="255" placeholder="House no, Street" required>
+    </div>
+
+    <div class="order-field">
+      <label class="order-label">Address Line 2</label>
+      <input class="order-input" type="text" name="Address_AddressLine2" maxlength="255" placeholder="Landmark, Area (optional)">
+    </div>
+
+    <div class="order-row">
+      <div class="order-field">
+        <label class="order-label">City <span class="order-required">*</span></label>
+        <input class="order-input" type="text" name="Address_City" maxlength="255" placeholder="City" required>
+      </div>
+      <div class="order-field">
+        <label class="order-label">State</label>
+        <input class="order-input" type="text" name="Address_Region" maxlength="255" placeholder="State">
+      </div>
+    </div>
+
+    <div class="order-field">
+      <label class="order-label">Pin Code <span class="order-required">*</span></label>
+      <input class="order-input" type="text" name="Address_ZipCode" maxlength="255" placeholder="Pin code" required>
+    </div>
+
+    <textarea name="MultiLine" id="order-details-hidden" style="display:none;"></textarea>
+
+    <button type="submit" id="place-order-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      Place Order
+    </button>
+
+  </form>
+</div>
