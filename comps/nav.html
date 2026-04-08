@@ -1,0 +1,186 @@
+<div id="navbar">
+  <style>
+    nav {
+      z-index: 1000;
+      background: #FF5400;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.75rem;
+      position: sticky;
+      top: 0;
+    }
+    
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    
+    .cart-btn {
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .cart-btn svg path,
+    .cart-btn svg circle {
+      stroke: white;
+    }
+    
+    #cart-count {
+      position: absolute;
+      top: -5px;
+      right: -6px;
+      background: white;
+      color: #FF5400;
+      font-size: .6rem;
+      font-weight: 700;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+    }
+    
+    .navdrop {
+      z-index: 600;
+      background: linear-gradient(#FFE9E8 50%, #FFD9D8);
+      color: darkslategrey;
+      display: flex;
+      justify-content: space-evenly;
+      padding: 2rem 1rem;
+      position: fixed;
+      inset: auto 0 auto 0;
+      transition: transform .35s ease-out;
+      transform: translateY(-105%);
+    }
+    
+    .navdrop>div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .navdrop>div:first-child {
+      align-items: flex-end;
+    }
+    
+    .navdrop>div:nth-child(2) {
+      align-items: flex-start;
+    }
+    
+    .navdrop>div>* {
+      text-decoration: none;
+      color: darkslategrey;
+      padding-bottom: .3rem;
+      padding-top: .3rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    
+    .ct>a {
+      color: orangered;
+    }
+    
+    .drop {
+      transform: translateY(0);
+    }
+    
+    line {
+      stroke: white;
+      stroke-width: 4;
+      stroke-linecap: round;
+      transform-origin: center;
+      transition: all 0.25s ease;
+    }
+    
+    .active .top {
+      opacity: 0;
+    }
+    
+    .active .bottom {
+      opacity: 0;
+    }
+    
+    .active .middle1 {
+      transform: rotate(33deg);
+    }
+    
+    .active .middle2 {
+      transform: rotate(-33deg);
+    }
+  </style>
+  
+  <nav>
+    <h2 onclick="window.location.replace('/')">Gamkharu</h2>
+    <div class="nav-right">
+      
+      
+      <button style="background:none; border:none; cursor:pointer; padding: 2px 8px 0 0 ;">
+        <svg width="25" height="23" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- handle -->
+          <polyline points="1,1 4,1 4,16" />
+          <!-- basket -->
+          <polyline points="4,5 21,5 19,13 6,13" />
+          <!-- wheels -->
+          <circle cx="9" cy="19" r="1.8" />
+          <circle cx="17" cy="19" r="1.8" />
+        </svg>
+      </button>
+      
+      <button onclick="navdrop.classList.toggle('drop'); menuIcon.classList.toggle('active')" style="background: none; border: none; outline: none;">
+        <svg id="menuIcon" width="40" height="30" viewBox="0 0 40 40">
+          <g stroke="black" stroke-width="4" stroke-linecap="round">
+            <line class="top" x1="2" y1="10" x2="38" y2="10" />
+            <line class="middle1" x1="2" y1="20" x2="38" y2="20" />
+            <line class="middle2" x1="2" y1="20" x2="38" y2="20" />
+            <line class="bottom" x1="2" y1="30" x2="38" y2="30" />
+          </g>
+        </svg>
+      </button>
+      
+    </div>
+  </nav>
+  
+  <section id="navdrop" class="navdrop">
+    <div>
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="">Contact Us</a>
+      <a href="/wishlist.html">Your Wishlist</a>
+    </div>
+    <hr>
+    <div class="ct">
+      <a href="">Clothing</a>
+      <a href="">Jewelry</a>
+      <a href="">Accessories</a>
+    </div>
+  </section>
+  
+  <script>
+    (function() {
+      const badge = document.getElementById('cart-count');
+      
+      function updateCart() {
+        try {
+          const cart = JSON.parse(localStorage.getItem('gk_cart') || '[]');
+          const total = cart.reduce((s, i) => s + (i.qty || 1), 0);
+          badge.textContent = total;
+          badge.style.display = total > 0 ? 'flex' : 'none';
+        } catch { badge.style.display = 'none'; }
+      }
+      updateCart();
+      window.addEventListener('storage', updateCart);
+    })();
+  </script>
+</div>
