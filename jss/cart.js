@@ -8,6 +8,8 @@ async function load() {
   await addcomp('cartcomp-placeholder', './comps/cartcomp.html');
   await cartInit();
 
+
+
 }
 
 

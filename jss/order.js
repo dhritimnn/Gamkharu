@@ -7,6 +7,9 @@ async function load() {
   
   await addcomp('ordercomp-placeholder', './comps/ordercomp.html');
   await orderCompInit();
+  
+  await addcomp('footer-placeholder', './comps/footer.html');
+
 }
 
 
