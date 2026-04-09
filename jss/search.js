@@ -9,6 +9,9 @@ async function load() {
   
   await searchResultInit()
 
+
+  await addcomp('footer-placeholder', './comps/footer.html');
+
 }
 
 
