@@ -5,7 +5,8 @@ async function load() {
   
   await searchjsfunc();
   
-  
+  await addcomp('footer-placeholder', '../comps/footer.html');
+
   
 }
 

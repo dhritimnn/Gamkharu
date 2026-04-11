@@ -7,26 +7,144 @@
   <title></title>
   
   <link rel="stylesheet" href="../roots/root.css">
+  
+  <style>
+    .eleh {
+      padding: 4rem 2rem 2rem 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 1.2rem;
+      color: #42445A;
+    }
+    
+    .eleh span {
+      height: 5px;
+      width: 100px;
+      background: #B99F8F70;
+    }
+    
+    .secfcat {
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .cat-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    
+    .cat-card:active {
+      transform: scale(0.98);
+    }
+    
+    .cat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
+    }
+    
+    .cat-card__img-wrap {
+      width: 110px;
+      min-width: 110px;
+      height: 110px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .cat-card__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .cat-card__body {
+      padding: 1rem 1.5rem;
+      flex: 1;
+    }
+    
+    .cat-card__label {
+      font-size: 1.25rem;
+      font-weight: 570;
+      color: #1a1a1a;
+      margin: 0 0 0.2rem;
+      line-height: 1.2;
+    }
+    
+    .cat-card__sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      color: #888;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    
+    .cat-card__arrow {
+      margin-right: 1.2rem;
+      color: #bbb;
+      font-size: 1.2rem;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+    
+    .cat-card:hover .cat-card__arrow {
+      transform: translateX(4px);
+      color: #555;
+    }
+  </style>
 </head>
 
 <body>
+  
+  
   <div style="position:sticky; top:0; z-index: 1000;">
     <div id="navbar-placeholder"></div>
     <div id="searchbar-placeholder"></div>
   </div>
   
-  <section>
+  
+  
+  
+  
+  <div class="eleh">
+    <h2>Accessories Categories</h2>
+    <span></span>
+  </div>
+  
+  
+  
+  
+  <section class="secfcat">
     
-    <div>
-      <img src="" alt="">
-      <span>MS</span>
-    </div>
+    <a href="" class="cat-card">
+      <div class="cat-card__img-wrap">
+        <img src="../rootimg/01.webp" alt="Mekhela Sador">
+      </div>
+      <div class="cat-card__body">
+        <p class="cat-card__label"></p>
+        <p class="cat-card__sub"></p>
+      </div>
+      <span class="cat-card__arrow">›</span>
+    </a>
     
   </section>
   
   
+  
+  <div id="footer-placeholder"></div>
+  
   <script src="../roots/root.js"></script>
-  <script src="accessories.js"></script>
+  <script src="subcatagory.js"></script>
 </body>
 
 </html>
