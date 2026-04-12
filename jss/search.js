@@ -22,7 +22,7 @@ load()
 
 async function searchResultInit() {
   
-  const BATCH = 6;
+  const BATCH = 2;
   const FALLBACK_COLOR = '#e8dcd5';
   
   const params = new URLSearchParams(window.location.search);
