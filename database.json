@@ -141,7 +141,7 @@
     "cat": "pure toss mekhela sador featured"
   },
   {
-    "name": "Pure Toss",
+    "name": "Black Toss",
     "id": 17,
     "url": "p/17.webp",
     "url2": "p/17a.webp",
@@ -149,7 +149,7 @@
     "cat": "black toss mekhela sador featured"
   },
   {
-    "name": "Pure Toss",
+    "name": "Black Toss",
     "id": 18,
     "url": "p/18.webp",
     "url2": "p/18a.webp",
@@ -157,12 +157,44 @@
     "cat": "black toss mekhela sador featured"
   },
   {
-    "name": "Pure Toss",
+    "name": "Black Toss",
     "id": 19,
     "url": "p/19.webp",
     "url2": "p/19a.webp",
     "price": "7900₹",
     "cat": "black toss mekhela sador featured"
+  },
+  {
+    "name": "Diet Toss",
+    "id": 20,
+    "url": "p/20.webp",
+    "url2": "p/20a.webp",
+    "price": "8500₹",
+    "cat": "diet toss mekhela sador featured"
+  },
+  {
+    "name": "Diet Toss",
+    "id": 21,
+    "url": "p/21.webp",
+    "url2": "p/21a.webp",
+    "price": "8470₹",
+    "cat": "diet toss mekhela sador featured"
+  },
+  {
+    "name": "Mix Toss",
+    "id": 22,
+    "url": "p/22.webp",
+    "url2": "p/22a.webp",
+    "price": "3500₹",
+    "cat": "mix toss mekhela sador featured"
+  },
+  {
+    "name": "Mix Toss",
+    "id": 23,
+    "url": "p/23.webp",
+    "url2": "p/23a.webp",
+    "price": "3700₹",
+    "cat": "mix toss mekhela sador featured"
   }
   
   
