@@ -131,6 +131,38 @@
     "url2": "p/15a.webp",
     "price": "8000₹",
     "cat": "pure toss mekhela sador featured"
+  },
+  {
+    "name": "Pure Toss",
+    "id": 16,
+    "url": "p/16.webp",
+    "url2": "p/16a.webp",
+    "price": "8400₹",
+    "cat": "pure toss mekhela sador featured"
+  },
+  {
+    "name": "Pure Toss",
+    "id": 17,
+    "url": "p/17.webp",
+    "url2": "p/17a.webp",
+    "price": "6000₹",
+    "cat": "black toss mekhela sador featured"
+  },
+  {
+    "name": "Pure Toss",
+    "id": 18,
+    "url": "p/18.webp",
+    "url2": "p/18a.webp",
+    "price": "9500₹",
+    "cat": "black toss mekhela sador featured"
+  },
+  {
+    "name": "Pure Toss",
+    "id": 19,
+    "url": "p/19.webp",
+    "url2": "p/19a.webp",
+    "price": "7900₹",
+    "cat": "black toss mekhela sador featured"
   }
   
   
