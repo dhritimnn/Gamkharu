@@ -195,6 +195,30 @@
     "url2": "p/23a.webp",
     "price": "3700₹",
     "cat": "mix toss mekhela sador featured"
+  },
+    {
+    "name": "Masrise Toss",
+    "id": 24,
+    "url": "p/24.webp",
+    "url2": "p/24a.webp",
+    "price": "4300₹",
+    "cat": "masrise toss mekhela sador featured"
+  },
+  {
+    "name": "Toss Cotton",
+    "id": 25,
+    "url": "p/25.webp",
+    "url2": "p/25a.webp",
+    "price": "1550₹",
+    "cat": "toss cotton mekhela sador featured"
+  },
+  {
+    "name": "Toss Cotton",
+    "id": 26,
+    "url": "p/26.webp",
+    "url2": "p/26a.webp",
+    "price": "1520₹",
+    "cat": "toss cotton mekhela sador featured"
   }
   
   
