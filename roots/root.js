@@ -14,18 +14,40 @@ async function addcomp(id, path) {
 }
 
 
+
+async function fetchJSON(path) {
+  const key = 'gk_db_data';
+  const hashKey = 'gk_db_hash';
+  
+  const res = await fetch(path);
+  const text = await res.text();
+  
+  // simple hash
+  let hash = 0;
+  for (let i = 0; i < text.length; i++) {
+    hash = (hash * 31 + text.charCodeAt(i)) & 0xffffffff;
+  }
+  hash = hash.toString();
+  
+  if (hash === localStorage.getItem(hashKey)) {
+    return JSON.parse(localStorage.getItem(key));
+  }
+  
+  const data = JSON.parse(text);
+  localStorage.setItem(key, text);
+  localStorage.setItem(hashKey, hash);
+  return data;
+}
+
+
 async function searchjsfunc() {
   const products = [
-      "Red Floral Dress",
-      "Blue Cotton Kurti",
-      "Silk Saree",
-      "Gold Necklace",
-      "Silver Ring",
-      "Cotton Kurta",
-      "Lehenga Set",
-      "Pearl Earrings",
       "Mekhela Sador",
-      "Red Dupatta",
+      "Toss Cotton",
+      "Masrise Cotton",
+      "Masrise Toss",
+      "Diet Toss",
+      "Black Toss"
     ];
 
     const arrowSVG = `<svg width="25px" height="25px" viewBox="0 0 40 40">

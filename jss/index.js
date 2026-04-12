@@ -24,8 +24,7 @@ async function featuredInit() {
   const FALLBACK = '#e8dcd5';
   let db = [];
   try {
-    const res = await fetch('./database.json');
-    db = await res.json();
+    db = await fetchJSON('./database.json');
   } catch (e) { return; }
   
   const items = [...db].reverse().slice(0, 6);
@@ -35,7 +34,7 @@ async function featuredInit() {
     const card = document.createElement('div');
     card.className = 'ft-card';
     card.innerHTML = `<img src="${p.url || ''}" alt="${p.name}" loading="lazy"
-        onerror="this.style.display='none';this.parentElement.style.background='${FALLBACK}'">`;
+        onerror="this.style.display='none';this.parentElement.style.background='${FALLBACK}'" ste>`;
     card.addEventListener('click', () => window.location.href = `product.html?id=${p.id}`);
     grid.appendChild(card);
   });
