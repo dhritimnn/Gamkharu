@@ -1,5 +1,3 @@
-
-
 async function load() {
   
   await addcomp('navbar-placeholder', './comps/nav.html');
@@ -8,10 +6,10 @@ async function load() {
   await addcomp('searchresult-placeholder', './comps/searchresult.html');
   
   await searchResultInit()
-
-
+  
+  
   await addcomp('footer-placeholder', './comps/footer.html');
-
+  
 }
 
 
@@ -46,15 +44,23 @@ async function searchResultInit() {
   
   function bestScore(query, target) {
     if (!query) return 0;
-    const q = query.toLowerCase(),
-      t = target.toLowerCase();
+    const q = query.toLowerCase().trim();
+    const t = target.toLowerCase();
+    
+    // Exact substring match → perfect score
     if (t.includes(q)) return 0;
+    
+    // Score against each individual token
+    const tokens = t.split(/\s+/);
     let best = Infinity;
-    for (let i = 0; i <= t.length - q.length; i++) {
-      const d = lev(q, t.slice(i, i + q.length));
+    for (const token of tokens) {
+      if (token.includes(q)) return 0;
+      // Compare against a same-length slice of the token to keep lev fair
+      const slice = token.slice(0, q.length + 2);
+      const d = lev(q, slice);
       if (d < best) best = d;
     }
-    return Math.min(best, lev(q, t));
+    return best;
   }
   
   function shuffleAfterTop(arr) {
@@ -79,9 +85,11 @@ async function searchResultInit() {
     if (!query.trim()) {
       ranked = reversed;
     } else {
+      const q = query.trim();
+      const maxDist = q.length <= 3 ? 1 : 2; // adaptive threshold
       ranked = reversed
-        .map(p => ({ ...p, _score: bestScore(query, p.name + ' ' + p.cat) }))
-        .filter(p => p._score <= 4)
+        .map(p => ({ ...p, _score: bestScore(q, p.name + ' ' + p.cat) }))
+        .filter(p => p._score <= maxDist)
         .sort((a, b) => a._score - b._score);
     }
     originalOrder = [...ranked];
