@@ -1,12 +1,52 @@
 <div id="header">
   <style>
-    header {
+    #header {
+      position: relative;
       width: 100%;
+      overflow: hidden;
+    }
+
+    #hc-track {
+      display: flex;
+      transition: transform .5s cubic-bezier(.4,0,.2,1);
+      will-change: transform;
+    }
+
+    .hc-slide {
+      min-width: 100%;
       height: 400px;
-      background: url(./rootimg/01.webp);
       background-size: cover;
+      background-position: center;
+      flex-shrink: 0;
+    }
+
+    #hc-dots {
+      position: absolute;
+      bottom: .85rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: .45rem;
+      z-index: 10;
+    }
+
+    .hc-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.45);
+      transition: background .25s, transform .25s;
+      cursor: pointer;
+    }
+
+    .hc-dot.active {
+      background: white;
+      transform: scale(1.35);
     }
   </style>
-  <header>
-  </header>
+
+  <div id="hc-track"></div>
+  <div id="hc-dots"></div>
+
+ 
 </div>

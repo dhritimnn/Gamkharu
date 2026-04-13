@@ -4,6 +4,7 @@ async function load() {
   await addcomp('searchbar-placeholder', './comps/searchbar.html');
   await searchjsfunc();
   await addcomp('header-placeholder', './comps/header.html');
+  await headerCarousel();
   await addcomp('catagory-placeholder', './comps/catagory.html');
   await addcomp('featured-placeholder', './comps/featured.html');
   await featuredInit();
@@ -39,3 +40,58 @@ async function featuredInit() {
     grid.appendChild(card);
   });
 }
+
+
+
+function headerCarousel() {
+
+    const SLIDES = [
+      { img: './rootimg/2.webp' },
+      { img: './rootimg/3.webp' },
+      { img: './rootimg/4.webp' },
+      { img: './rootimg/5.webp' },
+    ];
+
+    const AUTOPLAY_MS = 3000;
+
+    const track = document.getElementById('hc-track');
+    const dotsWrap = document.getElementById('hc-dots');
+    let cur = 0, timer;
+
+    // build slides & dots
+    SLIDES.forEach((s, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'hc-slide';
+      slide.style.backgroundImage = `url('${s.img}')`;
+      track.appendChild(slide);
+
+      const dot = document.createElement('div');
+      dot.className = 'hc-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => { goTo(i); resetTimer(); });
+      dotsWrap.appendChild(dot);
+    });
+
+    function goTo(n) {
+      cur = (n + SLIDES.length) % SLIDES.length;
+      track.style.transform = `translateX(-${cur * 100}%)`;
+      dotsWrap.querySelectorAll('.hc-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+    }
+
+    function next() { goTo(cur + 1); }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(next, AUTOPLAY_MS);
+    }
+
+    // touch swipe
+    let ts = 0;
+    track.addEventListener('touchstart', e => { ts = e.touches[0].clientX; clearInterval(timer); }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - ts;
+      if (Math.abs(dx) > 40) goTo(cur + (dx < 0 ? 1 : -1));
+      resetTimer();
+    }, { passive: true });
+
+    resetTimer();
+  }
