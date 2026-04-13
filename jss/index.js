@@ -5,6 +5,7 @@ async function load() {
   await searchjsfunc();
   await addcomp('header-placeholder', './comps/header.html');
   await headerCarousel();
+  await addcomp('limsercomp', './comps/limservice.html');
   await addcomp('catagory-placeholder', './comps/catagory.html');
   await addcomp('featured-placeholder', './comps/featured.html');
   await featuredInit();
