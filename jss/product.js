@@ -21,7 +21,7 @@ load()
 
 async function productCompInit() {
     const FALLBACK = '#e8dcd5';
-    const WA_NUMBER = ''; // add number here
+    const WA_NUMBER = '9678657989'; // add number here
 
     function getCart() {
       try { return JSON.parse(localStorage.getItem('gk_cart') || '[]'); } catch { return []; }
@@ -199,7 +199,8 @@ lb.addEventListener('touchend', e => {
 
     // ── WHATSAPP ──
     document.getElementById('pc-wa-btn').addEventListener('click', () => {
-      const msg = encodeURIComponent(`Hi! I'm interested in *${p.name}* (ID: ${p.id}) priced at ${p.price}. Can you tell me more?`);
+      const msg = encodeURIComponent(`Hi! I'm interested in *${p.name}* (ID: ${p.id}) priced at ${p.price}. Can you tell me more?
+      https://gamkharu.in/product.html?id=${p.id}`);
       window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
     });
 
