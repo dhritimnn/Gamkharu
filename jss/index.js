@@ -52,6 +52,8 @@ function headerCarousel() {
       { img: './rootimg/3.webp' },
       { img: './rootimg/4.webp' },
       { img: './rootimg/5.webp' },
+      { img: './rootimg/6.webp' },
+      { img: './rootimg/7.webp' },
     ];
 
     const AUTOPLAY_MS = 3000;
