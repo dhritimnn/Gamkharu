@@ -165,16 +165,27 @@ lb.addEventListener('touchend', e => {
 
     // ── WISHLIST BUTTON (product itself) ──
     const wishBtn = document.getElementById('pc-wish-btn');
+    const wishHeart = wishBtn.querySelector('.heart-fill');
+
     function syncWishBtn() {
       const wished = getWishlist().includes(p.id);
       wishBtn.classList.toggle('wished', wished);
+      // fill or unfill heart
+      wishHeart.setAttribute('fill', wished ? 'white' : 'none');
+      // update last text node
+      wishBtn.childNodes[wishBtn.childNodes.length - 1].textContent = wished ? ' Go to Wishlist' : ' Wishlist';
     }
+
     syncWishBtn();
     wishBtn.addEventListener('click', () => {
       let wl = getWishlist();
-      wl.includes(p.id) ? wl = wl.filter(x => x !== p.id) : wl.push(p.id);
-      saveWishlist(wl);
-      syncWishBtn();
+      if (wl.includes(p.id)) {
+        window.location.href = 'wishlist.html';
+      } else {
+        wl.push(p.id);
+        saveWishlist(wl);
+        syncWishBtn();
+      }
     });
 
     // ── CART BUTTON ──
@@ -182,7 +193,7 @@ lb.addEventListener('touchend', e => {
     function syncCartBtn() {
       const inCart = getCart().some(x => x.id === p.id);
       cartBtn.classList.toggle('added', inCart);
-      cartBtn.childNodes[cartBtn.childNodes.length - 1].textContent = inCart ? ' In Cart ✓' : ' Add to Cart';
+      cartBtn.childNodes[cartBtn.childNodes.length - 1].textContent = inCart ? ' Go to Cart' : ' Add to Cart';
     }
     syncCartBtn();
     cartBtn.addEventListener('click', () => {
