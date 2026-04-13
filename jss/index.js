@@ -9,6 +9,7 @@ async function load() {
   await addcomp('catagory-placeholder', './comps/catagory.html');
   await addcomp('featured-placeholder', './comps/featured.html');
   await featuredInit();
+  await addcomp('loc-placeholder', './comps/location.html');
   await addcomp('footer-placeholder', './comps/footer.html');
 
 }
