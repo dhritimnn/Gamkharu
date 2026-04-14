@@ -127,7 +127,7 @@ async function searchResultInit() {
     card.innerHTML = `
       <div class="gk-card-img-wrap">
         <img
-          src="${p.url || ''}"
+          src="${p.urlsm || ''}"
           alt="${p.name}"
           onerror="this.style.display='none';this.parentElement.style.background='${FALLBACK_COLOR}'"
           onclick="window.location.assign('/product.html?id=${p.id}')"

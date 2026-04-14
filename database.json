@@ -4,6 +4,7 @@
   {
     "name": "Masrise Cotton",
     "id": 1,
+    "urlsm": "p/1.webp",
     "url": "p/1.webp",
     "url2": "p/1a.webp",
     "price": "3950₹",
@@ -13,6 +14,7 @@
   {
     "name": "Masrise Cotton",
     "id": 2,
+    "urlsm": "rootimg/p2r.webp",
     "url": "p/2.webp",
     "url2": "p/2a.webp",
     "price": "3950₹",
@@ -22,6 +24,7 @@
   {
     "name": "Masrise Cotton",
     "id": 3,
+    "urlsm": "p/3.webp",
     "url": "p/3.webp",
     "url2": "p/3a.webp",
     "price": "3950₹",
@@ -31,6 +34,7 @@
   {
     "name": "Masrise Cotton",
     "id": 4,
+    "urlsm": "p/4.webp",
     "url": "p/4.webp",
     "url2": "p/4a.webp",
     "price": "3950₹",
@@ -40,6 +44,7 @@
   {
     "name": "Masrise Cotton",
     "id": 5,
+    "urlsm": "p/5.webp",
     "url": "p/5.webp",
     "url2": "p/5a.webp",
     "price": "3950₹",
@@ -49,6 +54,7 @@
   {
     "name": "Masrise Cotton",
     "id": 6,
+    "urlsm": "p/6.webp",
     "url": "p/6.webp",
     "url2": "p/6a.webp",
     "price": "3950₹",
@@ -58,6 +64,7 @@
   {
     "name": "Masrise Cotton",
     "id": 7,
+    "urlsm": "p/7.webp",
     "url": "p/7.webp",
     "url2": "p/7a.webp",
     "price": "2799₹",
@@ -67,6 +74,7 @@
   {
     "name": "Masrise Cotton",
     "id": 8,
+    "urlsm": "p/8.webp",
     "url": "p/8.webp",
     "url2": "p/8a.webp",
     "price": "3950₹",
@@ -76,6 +84,7 @@
   {
     "name": "Masrise Cotton",
     "id": 9,
+    "urlsm": "p/9.webp",
     "url": "p/9.webp",
     "url2": "p/9a.webp",
     "price": "3399₹",
@@ -85,6 +94,7 @@
   {
     "name": "Masrise Cotton",
     "id": 10,
+    "urlsm": "p/10.webp",
     "url": "p/10.webp",
     "url2": "p/10a.webp",
     "price": "2799₹",
@@ -94,6 +104,7 @@
   {
     "name": "Masrise Cotton",
     "id": 11,
+    "urlsm": "p/11.webp",
     "url": "p/11.webp",
     "url2": "p/11a.webp",
     "price": "2799₹",
@@ -103,6 +114,7 @@
   {
     "name": "Masrise Cotton",
     "id": 12,
+    "urlsm": "rootimg/p13r.webp",
     "url": "p/12.webp",
     "url2": "p/12a.webp",
     "price": "2999₹",
@@ -111,6 +123,7 @@
   {
     "name": "Pure Toss",
     "id": 13,
+    "urlsm": "p/13.webp",
     "url": "p/13.webp",
     "url2": "p/13a.webp",
     "price": "11910₹",
@@ -119,6 +132,7 @@
   {
     "name": "Pure Toss",
     "id": 14,
+    "urlsm": "p/13.webp",
     "url": "p/14.webp",
     "url2": "p/14a.webp",
     "price": "7800₹",
@@ -127,6 +141,7 @@
   {
     "name": "Pure Toss",
     "id": 15,
+    "urlsm": "p/15.webp",
     "url": "p/15.webp",
     "url2": "p/15a.webp",
     "price": "8000₹",
@@ -135,6 +150,7 @@
   {
     "name": "Pure Toss",
     "id": 16,
+    "urlsm": "p/16.webp",
     "url": "p/16.webp",
     "url2": "p/16a.webp",
     "price": "8400₹",
@@ -143,6 +159,7 @@
   {
     "name": "Black Toss",
     "id": 17,
+    "urlsm": "p/17.webp",
     "url": "p/17.webp",
     "url2": "p/17a.webp",
     "price": "6000₹",
@@ -151,6 +168,7 @@
   {
     "name": "Black Toss",
     "id": 18,
+    "urlsm": "p/18.webp",
     "url": "p/18.webp",
     "url2": "p/18a.webp",
     "price": "9500₹",
@@ -159,6 +177,7 @@
   {
     "name": "Black Toss",
     "id": 19,
+    "urlsm": "p/19.webp",
     "url": "p/19.webp",
     "url2": "p/19a.webp",
     "price": "7900₹",
@@ -167,6 +186,7 @@
   {
     "name": "Diet Toss",
     "id": 20,
+    "urlsm": "p/20.webp",
     "url": "p/20.webp",
     "url2": "p/20a.webp",
     "price": "8500₹",
@@ -175,6 +195,7 @@
   {
     "name": "Diet Toss",
     "id": 21,
+    "urlsm": "p/21.webp",
     "url": "p/21.webp",
     "url2": "p/21a.webp",
     "price": "8470₹",
@@ -183,6 +204,7 @@
   {
     "name": "Mix Toss",
     "id": 22,
+    "urlsm": "p/22.webp",
     "url": "p/22.webp",
     "url2": "p/22a.webp",
     "price": "3500₹",
@@ -191,6 +213,7 @@
   {
     "name": "Mix Toss",
     "id": 23,
+    "urlsm": "p/23.webp",
     "url": "p/23.webp",
     "url2": "p/23a.webp",
     "price": "3700₹",
@@ -199,6 +222,7 @@
   {
     "name": "Masrise Toss",
     "id": 24,
+    "urlsm": "p/24.webp",
     "url": "p/24.webp",
     "url2": "p/24a.webp",
     "price": "4300₹",
@@ -207,6 +231,7 @@
   {
     "name": "Toss Cotton",
     "id": 25,
+    "urlsm": "p/25.webp",
     "url": "p/25.webp",
     "url2": "p/25a.webp",
     "price": "1550₹",
@@ -215,6 +240,7 @@
   {
     "name": "Toss Cotton",
     "id": 26,
+    "urlsm": "p/26.webp",
     "url": "p/26.webp",
     "url2": "p/26a.webp",
     "price": "1520₹",
@@ -223,6 +249,7 @@
   {
     "name": "Padmini Cotton",
     "id": 27,
+    "urlsm": "p/27.webp",
     "url": "p/27.webp",
     "url2": "p/27a.webp",
     "price": "3400₹",
@@ -231,6 +258,7 @@
   {
     "name": "Padmini Cotton",
     "id": 28,
+    "urlsm": "p/28.webp",
     "url": "p/28.webp",
     "url2": "p/28a.webp",
     "price": "2550₹",
@@ -239,6 +267,7 @@
   {
     "name": "Staple Cotton",
     "id": 29,
+    "urlsm": "p/29.webp",
     "url": "p/29.webp",
     "url2": "p/29a.webp",
     "price": "1750₹",
@@ -247,6 +276,7 @@
   {
     "name": "Staple Cotton",
     "id": 30,
+    "urlsm": "p/30.webp",
     "url": "p/30.webp",
     "url2": "p/30a.webp",
     "price": "2400₹",
