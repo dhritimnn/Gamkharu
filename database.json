@@ -196,7 +196,7 @@
     "price": "3700₹",
     "cat": "mix toss mekhela sador featured"
   },
-    {
+  {
     "name": "Masrise Toss",
     "id": 24,
     "url": "p/24.webp",
@@ -219,6 +219,38 @@
     "url2": "p/26a.webp",
     "price": "1520₹",
     "cat": "toss cotton mekhela sador featured"
+  },
+  {
+    "name": "Padmini Cotton",
+    "id": 27,
+    "url": "p/27.webp",
+    "url2": "p/27a.webp",
+    "price": "3400₹",
+    "cat": "padmini cotton mekhela sador featured"
+  },
+  {
+    "name": "Padmini Cotton",
+    "id": 28,
+    "url": "p/28.webp",
+    "url2": "p/28a.webp",
+    "price": "2550₹",
+    "cat": "padmini cotton mekhela sador featured"
+  },
+  {
+    "name": "Staple Cotton",
+    "id": 29,
+    "url": "p/29.webp",
+    "url2": "p/29a.webp",
+    "price": "1750₹",
+    "cat": "staple cotton mekhela sador featured"
+  },
+  {
+    "name": "Staple Cotton",
+    "id": 30,
+    "url": "p/30.webp",
+    "url2": "p/30a.webp",
+    "price": "2400₹",
+    "cat": "staple cotton mekhela sador featured"
   }
   
   
