@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us – Gamkharu</title>
+
+  <link rel="stylesheet" href="../roots/root.css">
+
+  <style>
+    .eleh {
+      padding: 4rem 2rem 2rem 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 1.2rem;
+      color: #42445A;
+    }
+
+    .eleh span {
+      height: 5px;
+      width: 100px;
+      background: #B99F8F70;
+    }
+
+    .secfcontact {
+      padding: 2rem 1.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .contact-card:active { transform: scale(0.98); }
+
+    .contact-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
+    }
+
+    .contact-card__icon-wrap {
+      width: 72px;
+      min-width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFF3EE;
+    }
+
+    .contact-card__icon-wrap svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .contact-card__body {
+      padding: 1rem 1.2rem;
+      flex: 1;
+    }
+
+    .contact-card__label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #aaa;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 0.2rem;
+    }
+
+    .contact-card__value {
+      font-size: 1rem;
+      font-weight: 570;
+      color: #1a1a1a;
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    .contact-card__arrow {
+      margin-right: 1.2rem;
+      color: #bbb;
+      font-size: 1.2rem;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .contact-card:hover .contact-card__arrow {
+      transform: translateX(4px);
+      color: #FF6435;
+    }
+
+    .contact-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: #bbb;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0.5rem 0;
+    }
+
+    .contact-divider::before,
+    .contact-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+
+    .contact-form-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-form-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #42445A;
+      margin: 0 0 1.2rem;
+    }
+
+    .cf-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    .cf-field label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #888;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .cf-field input,
+    .cf-field textarea {
+      border: 1.5px solid #eee;
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      font-size: 0.95rem;
+      color: #1a1a1a;
+      outline: none;
+      transition: border-color 0.2s ease;
+      font-family: inherit;
+      background: #fafafa;
+      resize: none;
+    }
+
+    .cf-field input:focus,
+    .cf-field textarea:focus {
+      border-color: #FF6435;
+      background: #fff;
+    }
+
+    .cf-submit {
+      width: 100%;
+      padding: 0.85rem;
+      background: #FF6435;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .cf-submit:active {
+      transform: scale(0.98);
+      background: #e0572a;
+    }
+
+    .cf-submit:hover { background: #FF8A4D; }
+  </style>
+</head>
+
+<body>
+
+  <div style="position:sticky; top:0; z-index: 1000;">
+    <div id="navbar-placeholder"></div>
+    <div id="searchbar-placeholder"></div>
+  </div>
+
+  <div class="eleh">
+    <h2>Contact Us</h2>
+    <span></span>
+  </div>
+
+  <section class="secfcontact">
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/9678657989" target="_blank" class="contact-card">
+      <div class="contact-card__icon-wrap">
+        <svg viewBox="0 0 24 24" fill="#FF6435" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.405A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2Zm0 18a7.952 7.952 0 0 1-4.073-1.118l-.292-.174-3.03.855.844-3.088-.19-.308A7.96 7.96 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8Zm4.406-5.884c-.242-.121-1.43-.706-1.652-.786-.221-.08-.382-.121-.543.121-.16.242-.623.786-.764.947-.14.16-.281.181-.523.06-.242-.12-1.02-.376-1.944-1.2-.718-.64-1.203-1.43-1.344-1.672-.14-.242-.015-.373.106-.493.109-.108.242-.282.363-.423.12-.14.16-.242.242-.402.08-.161.04-.302-.02-.423-.06-.12-.543-1.31-.744-1.794-.196-.471-.395-.407-.543-.414l-.462-.008c-.16 0-.422.06-.643.302-.221.241-.844.825-.844 2.012s.864 2.333.984 2.494c.121.16 1.7 2.596 4.12 3.641.576.249 1.025.397 1.375.508.578.184 1.104.158 1.52.096.463-.069 1.43-.585 1.632-1.15.2-.563.2-1.045.14-1.146-.06-.1-.221-.16-.463-.281Z"/>
+        </svg>
+      </div>
+      <div class="contact-card__body">
+        <p class="contact-card__label">WhatsApp</p>
+        <p class="contact-card__value">+91 96786 57989</p>
+      </div>
+      <span class="contact-card__arrow">›</span>
+    </a>
+
+    <!-- Phone -->
+    <a href="tel:+919678657989" class="contact-card">
+      <div class="contact-card__icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6435" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/>
+        </svg>
+      </div>
+      <div class="contact-card__body">
+        <p class="contact-card__label">Call Us</p>
+        <p class="contact-card__value">+91 96786 57989</p>
+      </div>
+      <span class="contact-card__arrow">›</span>
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:gamkharuboutique05@gmail.com" class="contact-card">
+      <div class="contact-card__icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6435" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+      </div>
+      <div class="contact-card__body">
+        <p class="contact-card__label">Email</p>
+        <p class="contact-card__value">gamkharuboutique05@gmail.com</p>
+      </div>
+      <span class="contact-card__arrow">›</span>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/gamkharu_boutique05" target="_blank" class="contact-card">
+      <div class="contact-card__icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6435" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="#FF6435"/>
+        </svg>
+      </div>
+      <div class="contact-card__body">
+        <p class="contact-card__label">Instagram</p>
+        <p class="contact-card__value">@gamkharu_boutique05</p>
+      </div>
+      <span class="contact-card__arrow">›</span>
+    </a>
+
+    <div class="contact-divider">or send a message</div>
+
+    <!-- Message Form -->
+    <div class="contact-form-card">
+      <h3>Leave us a message</h3>
+
+      <div class="cf-field">
+        <label for="cf-name">Your Name</label>
+        <input type="text" id="cf-name" placeholder="Enter Your Name">
+      </div>
+
+      <div class="cf-field">
+        <label for="cf-phone">Phone / WhatsApp</label>
+        <input type="tel" id="cf-phone" placeholder="+91 XXXXX XXXXX">
+      </div>
+
+      <div class="cf-field">
+        <label for="cf-msg">Message</label>
+        <textarea id="cf-msg" rows="4" placeholder="Ask about an order, product, or anything else…"></textarea>
+      </div>
+
+      <button class="cf-submit" onclick="submitContact()">Send Message</button>
+    </div>
+
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../roots/root.js"></script>
+  <script src="contact.js"></script>
+</body>
+
+</html>
