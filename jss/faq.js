@@ -27,6 +27,10 @@ function qna() {
     answer: "We accept returns within 7 days of delivery. Items must be unused and in original packaging."
   },
   {
+    question: "How can I request a return?",
+    answer: "Reach out to us via our whatsapp or contact, and do a verbal return proposal. We'll identify your order, and confirm the return immediately."
+  },
+  {
     question: "How long does shipping take?",
     answer: "Standard shipping takes 3–5 business days. Express options are available at checkout."
   },
