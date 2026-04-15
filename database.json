@@ -281,7 +281,117 @@
     "url2": "p/30a.webp",
     "price": "2400₹",
     "cat": "staple cotton mekhela sador featured"
-  }
+  },
   
+  
+  
+  
+  
+  
+    {
+    "name": "Oxidised Jhumka",
+    "id": 31,
+    "urlsm": "p/31s.webp",
+    "url": "p/31.webp",
+    "price": "100₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 32,
+    "urlsm": "p/32s.webp",
+    "url": "p/32.webp",
+    "price": "100₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 33,
+    "urlsm": "p/33s.webp",
+    "url": "p/33.webp",
+    "price": "100₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 34,
+    "urlsm": "p/34s.webp",
+    "url": "p/34.webp",
+    "price": "100₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 35,
+    "urlsm": "p/35s.webp",
+    "url": "p/35.webp",
+    "price": "100₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 36,
+    "urlsm": "p/36s.webp",
+    "url": "p/36.webp",
+    "price": "120₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 37,
+    "urlsm": "p/37s.webp",
+    "url": "p/37.webp",
+    "price": "120₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 38,
+    "urlsm": "p/38s.webp",
+    "url": "p/38.webp",
+    "price": "120₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 39,
+    "urlsm": "p/39s.webp",
+    "url": "p/39.webp",
+    "price": "100₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 40,
+    "urlsm": "p/40s.webp",
+    "url": "p/40.webp",
+    "price": "100₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 41,
+    "urlsm": "p/41s.webp",
+    "url": "p/41.webp",
+    "url2": "p/41a.webp",
+    "price": "100₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 43,
+    "urlsm": "p/43s.webp",
+    "url": "p/43.webp",
+    "price": "100₹",
+    "cat": "oxidised jhumka featured"
+  },
+  {
+    "name": "Oxidised Jhumka",
+    "id": 44,
+    "urlsm": "p/44s.webp",
+    "url": "p/44.webp",
+    "price": "100₹",
+    "cat": "oxidised jhumka featured"
+  }
   
 ]
