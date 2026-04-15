@@ -238,7 +238,7 @@ lb.addEventListener('touchend', e => {
         card.className = 'gk-card';
         card.innerHTML = `
           <div class="gk-card-img-wrap">
-            <img src="${sp.url||''}" alt="${sp.name}" onerror="this.style.display='none';this.parentElement.style.background='${FALLBACK}'" loading="lazy">
+            <img src="${sp.urlsm||''}" alt="${sp.name}" onerror="this.style.display='none';this.parentElement.style.background='${FALLBACK}'" loading="lazy">
             <button class="gk-wish${wished?' wished':''}" data-id="${sp.id}" aria-label="Wishlist">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF5400" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path class="heart-fill" d="M12 21C12 21 3 14.5 3 8.5A5 5 0 0 1 12 6.5 5 5 0 0 1 21 8.5C21 14.5 12 21 12 21Z"/>
