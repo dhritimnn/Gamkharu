@@ -49,6 +49,7 @@ function headerCarousel() {
 
     const SLIDES = [
       { img: './rootimg/2.webp' },
+      { img: './rootimg/2w.webp' },
       { img: './rootimg/3.webp' },
       { img: './rootimg/4.webp' },
       { img: './rootimg/5.webp' },
