@@ -294,7 +294,7 @@
     "urlsm": "p/31s.webp",
     "url": "p/31.webp",
     "price": "100₹",
-    "cat": "oxidised jhumka featured"
+    "cat": "oxidised jhumka accessories featured"
   },
   {
     "name": "Oxidised Jhumka",
@@ -302,7 +302,7 @@
     "urlsm": "p/32s.webp",
     "url": "p/32.webp",
     "price": "100₹",
-    "cat": "oxidised jhumka featured"
+    "cat": "oxidised jhumka accessories featured"
   },
   {
     "name": "Oxidised Jhumka",
@@ -310,7 +310,7 @@
     "urlsm": "p/33s.webp",
     "url": "p/33.webp",
     "price": "100₹",
-    "cat": "oxidised jhumka featured"
+    "cat": "oxidised jhumka accessories featured"
   },
   {
     "name": "Oxidised Jhumka",
@@ -318,7 +318,7 @@
     "urlsm": "p/34s.webp",
     "url": "p/34.webp",
     "price": "100₹",
-    "cat": "oxidised jhumka featured"
+    "cat": "oxidised jhumka accessories featured"
   },
   {
     "name": "Oxidised Jhumka",
@@ -326,7 +326,7 @@
     "urlsm": "p/35s.webp",
     "url": "p/35.webp",
     "price": "100₹",
-    "cat": "oxidised jhumka featured"
+    "cat": "oxidised jhumka accessories featured"
   },
   {
     "name": "Oxidised Jhumka",
@@ -334,7 +334,7 @@
     "urlsm": "p/37s.webp",
     "url": "p/37.webp",
     "price": "120₹",
-    "cat": "oxidised jhumka featured"
+    "cat": "oxidised jhumka accessories featured"
   },
   {
     "name": "Oxidised Jhumka",
@@ -342,7 +342,7 @@
     "urlsm": "p/38s.webp",
     "url": "p/38.webp",
     "price": "120₹",
-    "cat": "oxidised jhumka featured"
+    "cat": "oxidised jhumka accessories featured"
   },
   {
     "name": "Oxidised Jhumka",
@@ -350,7 +350,7 @@
     "urlsm": "p/39s.webp",
     "url": "p/39.webp",
     "price": "100₹",
-    "cat": "oxidised jhumka featured"
+    "cat": "oxidised jhumka accessories featured"
   },
   {
     "name": "Oxidised Jhumka",
@@ -359,7 +359,7 @@
     "url": "p/41.webp",
     "url2": "p/41a.webp",
     "price": "100₹",
-    "cat": "oxidised jhumka featured"
+    "cat": "oxidised jhumka accessories featured"
   },
   {
     "name": "Oxidised Jhumka",
@@ -367,7 +367,7 @@
     "urlsm": "p/43s.webp",
     "url": "p/43.webp",
     "price": "120₹",
-    "cat": "oxidised jhumka featured"
+    "cat": "oxidised jhumka accessories featured"
   },
   {
     "name": "Oxidised Jhumka",
@@ -375,7 +375,99 @@
     "urlsm": "p/44s.webp",
     "url": "p/44.webp",
     "price": "120₹",
-    "cat": "oxidised jhumka featured"
-  }
+    "cat": "oxidised jhumka accessories featured"
+  },
   
+  
+
+
+{
+  "name": "Headband",
+  "id": 45,
+  "urlsm": "p/45s.webp",
+  "url": "p/45.webp",
+  "price": "70₹",
+  "cat": "headband accessories featured"
+},
+{
+  "name": "Headband",
+  "id": 46,
+  "urlsm": "p/46s.webp",
+  "url": "p/46.webp",
+  "price": "40₹",
+  "cat": "headband accessories featured"
+},
+{
+  "name": "Headband",
+  "id": 47,
+  "urlsm": "p/47s.webp",
+  "url": "p/47.webp",
+  "price": "50₹",
+  "cat": "headband accessories featured"
+},
+{
+  "name": "Headband",
+  "id": 48,
+  "urlsm": "p/48s.webp",
+  "url": "p/48.webp",
+  "price": "70₹",
+  "cat": "headband accessories featured"
+},
+{
+  "name": "Headband",
+  "id": 49,
+  "urlsm": "p/49s.webp",
+  "url": "p/49.webp",
+  "price": "70₹",
+  "cat": "headband accessories featured"
+},
+{
+  "name": "Headband",
+  "id": 50,
+  "urlsm": "p/50s.webp",
+  "url": "p/50.webp",
+  "price": "70₹",
+  "cat": "headband accessories featured"
+},
+{
+  "name": "Headband",
+  "id": 51,
+  "urlsm": "p/51s.webp",
+  "url": "p/51.webp",
+  "price": "70₹",
+  "cat": "headband accessories featured"
+},
+{
+  "name": "Headband",
+  "id": 52,
+  "urlsm": "p/52s.webp",
+  "url": "p/52.webp",
+  "price": "70₹",
+  "cat": "headband accessories featured"
+},
+{
+  "name": "Headband",
+  "id": 53,
+  "urlsm": "p/53s.webp",
+  "url": "p/53.webp",
+  "price": "60₹",
+  "cat": "headband accessories featured"
+},
+{
+  "name": "Headband",
+  "id": 54,
+  "urlsm": "p/54s.webp",
+  "url": "p/54.webp",
+  "price": "60₹",
+  "cat": "headband accessories featured"
+},
+{
+  "name": "Headband",
+  "id": 55,
+  "urlsm": "p/55s.webp",
+  "url": "p/55.webp",
+  "price": "50₹",
+  "cat": "headband accessories featured"
+}
+
 ]
