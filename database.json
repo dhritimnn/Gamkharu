@@ -468,6 +468,51 @@
   "url": "p/55.webp",
   "price": "50₹",
   "cat": "headband accessories featured"
+},
+
+
+
+
+
+{
+  "name": "Loka Para",
+  "id": 56,
+  "urlsm": "p/56s.webp",
+  "url": "p/56.webp",
+  "price": "3600₹",
+  "cat": "neckless jewelry loka para featured"
+},
+{
+  "name": "Moni Mala Set",
+  "id": 57,
+  "urlsm": "p/57s.webp",
+  "url": "p/57.webp",
+  "price": "1050₹",
+  "cat": "neckless jewelry moni mala set featured"
+},
+{
+  "name": "Loka Para",
+  "id": 58,
+  "urlsm": "p/58s.webp",
+  "url": "p/58.webp",
+  "price": "2400₹",
+  "cat": "neckless jewelry loka para featured"
+},
+{
+  "name": "Neckless",
+  "id": 59,
+  "urlsm": "p/59s.webp",
+  "url": "p/59.webp",
+  "price": "2445₹",
+  "cat": "neckless jewelry featured"
+},
+{
+  "name": "Jon Biri",
+  "id": 60,
+  "urlsm": "p/60s.webp",
+  "url": "p/60.webp",
+  "price": "3600₹",
+  "cat": "neckless jewelry jon biri featured"
 }
 
 ]
