@@ -47,7 +47,9 @@ async function searchjsfunc() {
       "Masrise Cotton",
       "Masrise Toss",
       "Diet Toss",
-      "Black Toss"
+      "Black Toss",
+      "Jewelry",
+      "Neckl"
     ];
 
     const arrowSVG = `<svg width="25px" height="25px" viewBox="0 0 40 40">

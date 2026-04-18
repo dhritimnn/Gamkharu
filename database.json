@@ -480,7 +480,7 @@
   "urlsm": "p/56s.webp",
   "url": "p/56.webp",
   "price": "3600₹",
-  "cat": "neckless jewelry loka para featured"
+  "cat": "necklace jewelry loka para featured"
 },
 {
   "name": "Moni Mala Set",
@@ -488,7 +488,7 @@
   "urlsm": "p/57s.webp",
   "url": "p/57.webp",
   "price": "1050₹",
-  "cat": "neckless jewelry moni mala set featured"
+  "cat": "necklace jewelry moni mala set featured"
 },
 {
   "name": "Loka Para",
@@ -496,15 +496,15 @@
   "urlsm": "p/58s.webp",
   "url": "p/58.webp",
   "price": "2400₹",
-  "cat": "neckless jewelry loka para featured"
+  "cat": "necklace jewelry loka para featured"
 },
 {
-  "name": "Neckless",
+  "name": "Necklace",
   "id": 59,
   "urlsm": "p/59s.webp",
   "url": "p/59.webp",
   "price": "2445₹",
-  "cat": "neckless jewelry featured"
+  "cat": "necklace jewelry featured"
 },
 {
   "name": "Jon Biri",
@@ -512,7 +512,93 @@
   "urlsm": "p/60s.webp",
   "url": "p/60.webp",
   "price": "3600₹",
-  "cat": "neckless jewelry jon biri featured"
+  "cat": "necklace jewelry jon biri featured"
+},
+
+
+
+
+
+
+{
+  "name": "Necklace",
+  "id": 61,
+  "urlsm": "p/61s.webp",
+  "url": "p/61.webp",
+  "price": "2355₹",
+  "cat": "necklace jewelry featured"
+},
+{
+  "name": "Junka Set",
+  "id": 62,
+  "urlsm": "p/62s.webp",
+  "url": "p/62.webp",
+  "price": "3000₹",
+  "cat": "necklace jewelry featured"
+},
+{
+  "name": "Necklace",
+  "id": 63,
+  "urlsm": "p/63s.webp",
+  "url": "p/63.webp",
+  "price": "4785₹",
+  "cat": "necklace jewelry featured"
+},
+{
+  "name": "Lukapara Haar",
+  "id": 64,
+  "urlsm": "p/64s.webp",
+  "url": "p/64.webp",
+  "price": "4050₹",
+  "cat": "necklace jewelry featured"
+},
+{
+  "name": "Necklace",
+  "id": 65,
+  "urlsm": "p/65s.webp",
+  "url": "p/65.webp",
+  "price": "3150₹",
+  "cat": "necklace jewelry featured"
+},
+{
+  "name": "Necklace",
+  "id": 66,
+  "urlsm": "p/66s.webp",
+  "url": "p/66.webp",
+  "price": "5250₹",
+  "cat": "necklace jewelry featured"
+},
+{
+  "name": "Box Set",
+  "id": 67,
+  "urlsm": "p/67s.webp",
+  "url": "p/67.webp",
+  "price": "3000₹",
+  "cat": "necklace jewelry featured"
+},
+{
+  "name": "Jaapi",
+  "id": 68,
+  "urlsm": "p/68s.webp",
+  "url": "p/68.webp",
+  "price": "3000₹",
+  "cat": "necklace jewelry featured"
+},
+{
+  "name": "Jon Biri",
+  "id": 69,
+  "urlsm": "p/69s.webp",
+  "url": "p/69.webp",
+  "price": "3735₹",
+  "cat": "necklace jewelry featured"
+},
+{
+  "name": "Jaapi",
+  "id": 70,
+  "urlsm": "p/70s.webp",
+  "url": "p/70.webp",
+  "price": "2100₹",
+  "cat": "necklace jewelry featured"
 }
 
 ]
